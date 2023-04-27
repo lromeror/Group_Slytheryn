@@ -31,6 +31,5 @@ def update_figure(selected_year):
 
     return fig
 
-
 if __name__ == '__main__':
     app.run_server(debug=True)
