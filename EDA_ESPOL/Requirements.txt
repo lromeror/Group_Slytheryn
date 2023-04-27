@@ -7,3 +7,4 @@ cufflinks
 matplotlib
 openpyxl
 dash
+nbformat>=4.2.0
