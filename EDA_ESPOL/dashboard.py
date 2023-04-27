@@ -1,25 +1,22 @@
 
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
-
+from dash import Dash, html
+from dash.dependencies import Input, Output
+from dash.exceptions import PreventUpdate
 import pandas as pd
 
 df_H_p = pd.read_csv('data.csv')
 app = Dash(__name__)
 
 app.layout = html.Div([
-    dcc.Graph(id='graph-with-slider'),
-    dcc.Slider(
-        df['year'].min(),
-        df['year'].max(),
-        step=None,
-        value=df['year'].min(),
-        marks={str(year): str(year) for year in df['year'].unique()},
-        id='year-slider'
-    )
+    html.H1('MATERIAS DISPONIBLES POR FACULTAD'),
+    dcc.Dropdown(df_H_p.UNIDAD.unique(), 'Facultad de Ciencias Naturales y Matemáticas', id='dropdown-selection'),
+    dcc.Dropdown(df_H_p.UNIDAD.unique(), 'Facultad de Ciencias Naturales y Matemáticas', id='dropdown-selection'),
+    dcc.Graph(id='graph-facultad'),
+    html.Button('Click here to see the content', id='show-secret'),
+    dcc.Graph(id='graph-horarios')
 ])
-
-
 @app.callback(
     Output('graph-with-slider', 'figure'),
     Input('year-slider', 'value'))
