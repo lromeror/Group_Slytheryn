@@ -4,8 +4,7 @@ import plotly.express as px
 
 import pandas as pd
 
-
-
+df_H_p = pd.read_csv('data.csv')
 app = Dash(__name__)
 
 app.layout = html.Div([
