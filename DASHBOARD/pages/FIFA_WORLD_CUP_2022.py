@@ -12,7 +12,7 @@ from app import app
 layout = html.Div([
     dbc.Container([
         dbc.Row([
-            dbc.Col(html.H1("ADMISIONES", className="text-center")
+            dbc.Col(html.H1("FIFA WORLD CUP 2022 ", className="text-center")
                     , className="mb-5 mt-5")
         ]),
     ])

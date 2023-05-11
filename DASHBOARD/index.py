@@ -9,19 +9,14 @@ import dash_bootstrap_components as dbc
 
 from app import server
 from app import app
-from pages import admision, docencia, grado, home, postgrado, gryffindor, slytherin
+from pages import home,FIFA_WORLD_CUP_2022
 
 # building the navigation bar
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py
 dropdown = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Inicio", href="/home"),
-        dbc.DropdownMenuItem("Admisión", href="/admision"),
-        dbc.DropdownMenuItem("Docencia", href="/docencia"),
-        dbc.DropdownMenuItem("Grado", href="/grado"),
-        dbc.DropdownMenuItem("Postgrado", href="/postgrado"),
-        dbc.DropdownMenuItem("Gryffindor", href="/gryffindor"),
-        dbc.DropdownMenuItem("Slytherin", href="/slytherin"),
+        dbc.DropdownMenuItem("FIFA WORLD CUP 2022", href="/FIFA_WORLD_CUP_2022"),
     ],
     nav = True,
     in_navbar = True,
@@ -36,7 +31,7 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src="assets/logo_espol.png", height="30px")),
-                        dbc.Col(dbc.NavbarBrand("ESPOL DASHBOARD",)),
+                        dbc.Col(dbc.NavbarBrand("SLYTHERYN DASHBOARD",)),
                     ],
                     align='center',
                     justify='center'
@@ -63,6 +58,14 @@ navbar = dbc.Navbar(
     className="mb-4",
 )
 
+
+# embedding the navigation bar
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    navbar,
+    html.Div(id='page-content')
+])
+
 def toggle_navbar_collapse(n, is_open):
     if n:
         return not is_open
@@ -75,29 +78,12 @@ for i in [2]:
         [State(f"navbar-collapse{i}", "is_open")],
     )(toggle_navbar_collapse)
 
-# embedding the navigation bar
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    navbar,
-    html.Div(id='page-content')
-])
-
 
 @app.callback(Output('page-content', 'children'),
-              [Input('url', 'pathname')])
+            [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/admision':
-        return admision.layout
-    elif pathname == '/docencia':
-        return docencia.layout
-    elif pathname == '/grado':
-        return grado.layout
-    elif pathname == '/postgrado':
-        return postgrado.layout
-    elif pathname == '/gryffindor':
-        return gryffindor.layout
-    elif pathname == '/slytherin':
-        return slytherin.layout
+    if pathname == '/FIFA_WORLD_CUP_2022':
+        return FIFA_WORLD_CUP_2022.layout
     else:
         return home.layout
 
