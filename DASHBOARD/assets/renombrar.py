@@ -11,7 +11,7 @@ paises=['Ecuador','Argentina','Australia', 'Wales', 'Morocco', 'Qatar', 'Senegal
 #['Ecuador','Argentina','Wales','Uruguay'] paises ya hechos
 #['Spain','Portugal'] 
 df_img_codes = pd.read_csv('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/Data_worldCup/Images_country.csv',sep=';')
-for pais in  paises:
+for pais in  ['Mexico','Korea Republic','Qatar','Brazil','Japan']:
     df_f = df_img_codes[df_img_codes['PAIS']==pais]
     for actual,nuevo in zip(df_f.ACTUAL,df_f.NUEVO):
         file_oldname = os.path.join(f"/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/Images/{pais}",actual )
