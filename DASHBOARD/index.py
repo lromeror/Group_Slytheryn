@@ -31,14 +31,14 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src="assets/logo_espol.png", height="30px")),
-                        dbc.Col(dbc.NavbarBrand("SLYTHERYN DASHBOARD",)),
+                        dbc.Col(dbc.NavbarBrand("SLYTHERYN SOCCER DASHBOARD",)),
                     ],
                     align='center',
                     justify='center'
 
                 ),
                 href="/home",
-                style={'width':'71vw'}
+                style={'width':'55vw'}
             ),
             dbc.NavbarToggler(id="navbar-toggler2"),
             dbc.Collapse(
