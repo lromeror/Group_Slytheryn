@@ -14,8 +14,8 @@
 }
 .container_div_img{
     display: flex;
-    justify-content: stretch;
-    align-items: stretch;
+    justify-content: center ;
+    align-items: center;
 }
 .Container_text_frase{
     display: flex;
@@ -34,7 +34,8 @@
     justify-content: center;
 }
 .container_img img{
-    height: 40vh;
-    width: 30vw;
+    height: 50vw;
+    width: 50vw;
     border-radius: 1vw;
+    margin: 1vw 5vw 1vw 5vw;
 }
