@@ -11,59 +11,50 @@ from app import app
 
 # change to app.layout if running as single page app instead
 layout = html.Div([
-    dbc.Container([
-        dbc.Row([
-            dbc.Col(html.H1("Welcome to the ESPOL dashboard", className="text-center")
-                    , className="mb-5 mt-5")
+    html.Div([
+        html.Div([
+            html.Div(html.H1("Welcome to the Slytheryn Soccer dashboard", className="title",)
+                    , className="Container_text_frase",style={'margin-bottom':'4vw'},)
         ]),
-        dbc.Row([
-            dbc.Col(html.H5(children=' “Things get done only if the data we gather can inform and inspire those in a position to make a difference.” -Dr. Mike Schmoker '), className="mb-4")
-            ]),
-
-        # dbc.Row([
-        #     dbc.Col(html.H5(children='It consists of two main pages: Global, which gives an overview of the COVID-19 cases and deaths around the world, '
-        #                              'Singapore, which gives an overview of the situation in Singapore after different measures have been implemented by the local government.')
-        #             , className="mb-5")
-        # ]),
-
-        # dbc.Row([
-        #     dbc.Col(dbc.Card(children=[html.H3(children='Get the original datasets used in this dashboard',
-        #                                        className="text-center"),
-        #                                dbc.Row([dbc.Col(dbc.Button("Global", href="https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863",
-        #                                                            color="primary"),
-        #                                                 className="mt-3"),
-        #                                         dbc.Col(dbc.Button("Singapore", href="https://data.world/hxchua/covid-19-singapore",
-        #                                                            color="primary"),
-        #                                                 className="mt-3")], justify="center")
-        #                                ],
-        #                      body=True, color="dark", outline=True)
-        #             , width=4, className="mb-4"),
-
-        #     dbc.Col(dbc.Card(children=[html.H3(children='Access the code used to build this dashboard',
-        #                                        className="text-center"),
-        #                                dbc.Button("GitHub",
-        #                                           href="https://github.com/meredithwan/covid-dash-app",
-        #                                           color="primary",
-        #                                           className="mt-3"),
-        #                                ],
-        #                      body=True, color="dark", outline=True)
-        #             , width=4, className="mb-4"),
-
-        #     dbc.Col(dbc.Card(children=[html.H3(children='Read the Medium article detailing the process',
-        #                                        className="text-center"),
-        #                                dbc.Button("Medium",
-        #                                           href="https://medium.com/@meredithwan",
-        #                                           color="primary",
-        #                                           className="mt-3"),
-
-        #                                ],
-        #                      body=True, color="dark", outline=True)
-        #             , width=4, className="mb-4")
-        # ], className="mb-5"),
-
-        # html.A("Special thanks to Flaticon for the icon in COVID-19 Dash's logo.",
-        #        href="https://www.flaticon.com/free-icon/coronavirus_2913604")
-
-    ])
+        html.Div([
+            html.Div([
+                html.Div([html.H5(children=' “El día que no disfrute en el campo, voy a dejar el futbol” ')], className="text_frase")
+                ],className='Container_text_frase'),
+            html.Div([
+                html.Div([html.Img(src='https://emprendedor.com/wp-content/uploads/2022/12/lionel-messi-copa-del-mundo-3.jpg',alt='Messi',)],className='container_img'),
+                html.Div([html.Img(src='https://pbs.twimg.com/media/FFnsNEmXwAcdSi-.jpg:large',alt='Messi2')],className='container_img'),
+                html.Div([html.Img(src='https://studiofutbol.com.ec/wp-content/uploads/2023/05/messi-laureus.jpg',alt='Messi3')],className='container_img'),
+                ],className='container_div_img'),
+            html.Div([
+                html.Div([html.H5(children=' “Al final, cuando se termine todo esto, ¿qué te llevas? Mi intención es que, cuando me retire, se me recuerde por ser buen tipo” - Leonel Messi ')], className="text_frase")
+                ],className='Container_text_frase')
+        ],className='frases_jugador'),
+        html.Div([
+            html.Div([
+                html.Div([html.H5(children=' “Cuando la gente tiene éxito, es gracias al sacrificio. La suerte no tiene nada que ver con el éxito” ')], className="text_frase")
+                ],className='Container_text_frase'),
+            html.Div([
+                html.Div([html.Img(src='https://i.ytimg.com/vi/yv_JvjGdi34/maxresdefault.jpg',alt='Messi',)],className='container_img'),
+                html.Div([html.Img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/1200px-Maradona-Mundial_86_con_la_copa.JPG',alt='Messi2')],className='container_img'),
+                html.Div([html.Img(src='https://www.mundodeportivo.com/us/files/article_main_microformat/files/fp/uploads/2022/11/18/6377b9477bb99.r_d.369-213-0.png',alt='Messi3')],className='container_img'),
+                ],className='container_div_img'),
+            html.Div([
+                html.Div([html.H5(children=' “Estoy arrepentido del 99 % de todo lo que hice en mi vida; pero el 1% que es el fútbol salva el resto” - Diego Maradona')], className="text_frase")
+                ],className='Container_text_frase')
+        ],className='frases_jugador'),
+         html.Div([
+            html.Div([
+                html.Div([html.H5(children=' “La gente ve a los futbolistas como seres diferentes, como si fuéramos intocables, como si nunca nos pasara nada, pero somos personas.” ')], className="text_frase")
+                ],className='Container_text_frase'),
+            html.Div([
+                html.Div([html.Img(src='https://d3h7g948tee6ho.cloudfront.net/wp-content/uploads/2018/04/iniesta-copas.jpg',alt='Messi',)],className='container_img'),
+                html.Div([html.Img(src='https://www.sportzcraazy.com/wp-content/uploads/2019/09/Andres-Iniesta-bio-e1567665343886.jpg',alt='Messi2')],className='container_img'),
+                html.Div([html.Img(src='https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/ZPO4LBYDOBGQZER4GGWFEEY6RE.jpg',alt='Messi3')],className='container_img'),
+                ],className='container_div_img'),
+            html.Div([
+                html.Div([html.H5(children='“Juego para ser feliz, no para ganar nada” - Andrés Iniesta')], className="text_frase")
+                ],className='Container_text_frase')
+        ],className='frases_jugador')
+    ],className='Container_frases_img')
 
 ])

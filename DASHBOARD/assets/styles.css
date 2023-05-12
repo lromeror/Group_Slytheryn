@@ -1,0 +1,40 @@
+.Container_frases_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2vw;
+}
+.frases_jugador{
+    margin-bottom: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container_div_img{
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.Container_text_frase{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.text_frase{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.container_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container_img img{
+    height: 40vh;
+    width: 30vw;
+    border-radius: 1vw;
+}
