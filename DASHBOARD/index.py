@@ -49,6 +49,17 @@ navbar = dbc.Navbar(
                 href="https://www.fifa.com/es",
                 style={"textDecoration": "none"},
             ),
+            html.A(
+                dbc.Row(
+                    [
+                        html.P('CONFEDERATIONS'),
+                    ],
+                    align="center",
+                    className="g-0", 
+                ),
+                href="/Confederations",
+                style={"textDecoration": "none"},
+            ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 search_bar,
@@ -64,7 +75,7 @@ navbar = dbc.Navbar(
 
 
 @app.callback(
-    Output("navbar-collapse", "is_open"),
+    Output("navbar-collapse", "is_open",),
     [Input("navbar-toggler", "n_clicks")],
     [State("navbar-collapse", "is_open")],
 )
@@ -84,125 +95,22 @@ carousel = dbc.Carousel(
     interval=2000,
     ride="carousel"
 )
-#Hay 5 confederaciones 
-folder_images = 'DASHBOARD/assets/Images'
-folder_confe = 'DASHBOARD/assets/Confederaciones'
-df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
-def contruir_seccion_confederation(df):
-    for confederation in df.continente.unique(): #en el data set la columna continente esta la clasificacion por confederación
-        df_f = df[df.continente==confederation]
-        teams_per_confe = df_f.team.unique()    # codigo de los equipos para las imagenes
-        name_teams_per_confe = df_f.seleccion.unique()  # nombre de los equipos
-        if confederation == 'UEFA':   # 13 teams
-            UEFA = dbc.Row([
-                        dbc.Col([ html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-                                html.H4('EUROPA'),
-                                html.P('Union des associations européennes de football (UEFA)')],className="container_federation"),
-                        dbc.Col([             
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[6]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[6].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[7]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[7].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[8]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[8].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[9]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[9].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[10]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[10].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[11]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[11].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[12]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[12].title()}")],className='container_img_name'),
-                                ],className='d-flex flex-row flex-wrap w-75')
-                    ],className='d-flex justify-content-md-center container_principal_images')
-        if confederation == 'AFC': 
-            AFC = dbc.Row([
-                        dbc.Col([ html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-                                html.H4('ASIA'),
-                                html.P('Confédération Africaine de Football (CAF)')],className="container_federation"),
-                        dbc.Col([             
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name'),
-                                ],className='d-flex flex-row flex-wrap w-75')
-                    ],className='d-flex justify-content-md-center container_principal_images')
-        if confederation == 'CAF': 
-            CAF = dbc.Row([
-                        dbc.Col([ html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-                                html.H4('AFRICA'),
-                                html.P('Asian Football Confederation (AFC)')],className="container_federation"),
-                        dbc.Col([             
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),
-                                ],className='d-flex flex-row flex-wrap w-75')
-                    ],className='d-flex justify-content-md-center container_principal_images')
-        if confederation == 'CONMEBOL':
-            CONMEBOL = dbc.Row([
-                        dbc.Col([ html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-                                html.H4('SUDAMERICA'),
-                                html.P('Confederación Sudamericana de Fútbol (CONMEBOL)')],className="container_federation"),
-                        dbc.Col([             
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),
-                                ],className='d-flex flex-row flex-wrap w-75')
-                    ],className='d-flex justify-content-md-center container_principal_images')
-        if confederation == 'CONCACAF':
-            CONCACAF = dbc.Row([
-                        dbc.Col([ html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-                                html.H4('NORTE AMERICA'),
-                                html.P('The Confederation of North, Central America and Caribbean Association (CONCACAF)')],className="container_federation"),
-                        dbc.Col([             
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),
-                                html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),
-                                ],className='d-flex flex-row flex-wrap w-75')
-                    ],className='d-flex justify-content-md-center container_principal_images')
-    return UEFA,AFC,CAF,CONMEBOL,CONCACAF
-UEFA,AFC,CAF,CONMEBOL,CONCACAF = contruir_seccion_confederation(df_img_team)
+
 app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
     html.Div(
-    [navbar, carousel,UEFA,AFC,CAF,CONMEBOL,CONCACAF]),
+    [navbar]),
+    html.Div(id='page-content')
 ])
+@app.callback(Output('page-content', 'children'),
+                [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == '/Argentina':
+        return Argentina.layout
+    if pathname == '/Confederations':
+        return Confederations.layout
+    else:
+        return Confederations.layout
 
 if __name__ == '__main__':
     app.run_server(host='127.0.0.1', debug=True)
