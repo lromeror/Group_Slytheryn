@@ -2,14 +2,13 @@ import plotly.express as px
 import pandas as pd
 
 import dash
-from dash import Dash, dcc, html
+from dash import Dash, dcc, html,callback
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 import os 
+from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,España,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabic,Marocco,Mexico,Netherlands,Polond,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales
 
-from app import app
-from pages import home,FIFA_WORLD_CUP_2022,Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,España,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabic,Marocco,Mexico,Netherlands,Polond,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales
 
 # building the navigation bar
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py
@@ -72,11 +71,16 @@ navbar = dbc.Navbar(
     color="#FFD500",
     dark=True,
 )
-layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    html.Div(
-    [navbar])
-])
+
+@callback(
+    Output("navbar-collapse", "is_open",),
+    [Input("navbar-toggler", "n_clicks")],
+    [State("navbar-collapse", "is_open")],
+)
+def toggle_navbar_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 carousel = dbc.Carousel(
     items=[
@@ -104,32 +108,32 @@ def contruir_seccion_confederation(df):
                                 html.H4('EUROPA'),
                                 html.P('Union des associations européennes de football (UEFA)')],className="container_federation"),
                         dbc.Col([             
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[0].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[1].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[2].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[3].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[4].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[5].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[6]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[6].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[6].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[7]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[7].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[7].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[8]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[8].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[8].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[9]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[9].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[9].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[10]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[10].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[10].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[11]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[11].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[11].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[12]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[12].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[12].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[0].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[1].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[2].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[4].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[5].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[6]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[6].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[6].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[7]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[7].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[7].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[8]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[8].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[8].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[9]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[9].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[9].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[10]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[10].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[10].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[11]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[11].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[11].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[12]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[12].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[12].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
         if confederation == 'AFC': 
@@ -138,18 +142,18 @@ def contruir_seccion_confederation(df):
                                 html.H4('ASIA'),
                                 html.P('Confédération Africaine de Football (CAF)')],className="container_federation"),
                         dbc.Col([             
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[0].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[1].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[2].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[3].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[4].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[5].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[0].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[1].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[2].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[4].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[5]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[5].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[5].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
         if confederation == 'CAF': 
@@ -158,16 +162,16 @@ def contruir_seccion_confederation(df):
                                 html.H4('AFRICA'),
                                 html.P('Asian Football Confederation (AFC)')],className="container_federation"),
                         dbc.Col([             
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[0].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[1].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[2].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[3].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[4].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[0].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[1].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[2].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[4]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[4].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[4].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
         if confederation == 'CONMEBOL':
@@ -176,14 +180,14 @@ def contruir_seccion_confederation(df):
                                 html.H4('SUDAMERICA'),
                                 html.P('Confederación Sudamericana de Fútbol (CONMEBOL)')],className="container_federation"),
                         dbc.Col([             
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[0].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[1].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[2].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[3].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[0].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[1].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[2].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
         if confederation == 'CONCACAF':
@@ -192,16 +196,22 @@ def contruir_seccion_confederation(df):
                                 html.H4('NORTE AMERICA'),
                                 html.P('The Confederation of North, Central America and Caribbean Association (CONCACAF)')],className="container_federation"),
                         dbc.Col([             
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[0].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[1].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[2].title()}"),
-                                html.A(html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
-                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name'),href=f"/{name_teams_per_confe[3].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[0]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[0].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[0].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[1]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[1].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[1].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[2]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[2].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[2].title()}"),
+                                dcc.Link([html.Div([html.Img(src=os.path.join(folder_images,teams_per_confe[3]),className='img_team'),
+                                html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
     return UEFA,AFC,CAF,CONMEBOL,CONCACAF
 UEFA,AFC,CAF,CONMEBOL,CONCACAF = contruir_seccion_confederation(df_img_team)
+
+layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(
+    [navbar,UEFA,AFC,CAF,CONMEBOL,CONCACAF])
+])
 

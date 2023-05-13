@@ -3,13 +3,13 @@ import plotly.express as px
 import pandas as pd
 
 import dash
-from dash import Dash, dcc, html
+from dash import Dash, dcc, html,callback
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 import os 
-from app import server
-from app import app
+
+
 
 # building the navigation bar
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py
@@ -49,6 +49,17 @@ navbar = dbc.Navbar(
                 href="https://www.fifa.com/es",
                 style={"textDecoration": "none"},
             ),
+            dcc.Link(
+                dbc.Row(
+                    [
+                        html.P('CONFEDERATIONS'),
+                    ],
+                    align="center",
+                    className="g-0", 
+                ),
+                href="/Confederations",
+                style={"textDecoration": "none"},
+            ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 search_bar,
@@ -65,4 +76,5 @@ navbar = dbc.Navbar(
 layout = html.Div([
     html.Div(
     [navbar]),
+    html.Div('Bienvenido a Argentina')
 ])

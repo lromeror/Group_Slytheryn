@@ -1,4 +1,4 @@
-pais='Japan'
+pais='Polond'
 import plotly.express as px
 import pandas as pd
 
