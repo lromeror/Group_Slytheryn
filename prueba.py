@@ -1,12 +1,16 @@
-import plotly.express as px
-import pandas as pd
-
-import dash
-from dash import Dash, dcc, html
-from dash.dependencies import Input, Output, State
-from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
+from dash import html
 
-from app import server
-from app import app
-
+def cartas_jugador(name,cod_img,img_player,posicion):
+    card = html.Button(
+    dbc.Row(
+        dbc.Col(
+            html.H4(posicion),
+        ),
+        dbc.Col(html.Img(img_player))
+    ),
+    dbc.Row(html.H1('name')),
+    dbc.Row(html.Img(cod_img)),className='carta_player_buttonm'
+    )
+    return card
+L=[cartas_jugador(name,cod_img,img_player,'Delantero')]

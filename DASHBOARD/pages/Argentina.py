@@ -72,9 +72,55 @@ navbar = dbc.Navbar(
     color="#FFD500",
     dark=True,
 )
+df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
+cod_img = df_img_team[df_img_team['seleccion']==pais]['team'].values[0]
+folder_img_players = f'assets/Images/{pais}'
+folder_img_seleccion = f'assets/Selecciones'
+players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name='Argentina')
+def cartas_jugador(name,cod_img,posicion):
+    card = html.Button([
+    html.Div([
+        html.Div(
+            [html.P(posicion)],className='col container_texto'
+        ),
+        html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'))],className='col')
+    ],className='row'),
+    html.Div([html.P(name)],className='row container_texto'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button')
+    return card
 
 layout = html.Div([
     html.Div(
     [navbar]),
-    html.Div('Bienvenido a Argentina')
+    html.Div('Bienvenido a Argentina'),
+    html.Div([
+        html.Div([cartas_jugador(players.Jugador[0],cod_img,players.Posición[0])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[1],cod_img,players.Posición[1])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[2],cod_img,players.Posición[2])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[3],cod_img,players.Posición[3])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[4],cod_img,players.Posición[4])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[5],cod_img,players.Posición[5])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[6],cod_img,players.Posición[6])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[7],cod_img,players.Posición[7])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[8],cod_img,players.Posición[8])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[9],cod_img,players.Posición[9])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[10],cod_img,players.Posición[10])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[11],cod_img,players.Posición[11])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[12],cod_img,players.Posición[12])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[13],cod_img,players.Posición[13])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[14],cod_img,players.Posición[14])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[15],cod_img,players.Posición[15])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[16],cod_img,players.Posición[16])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[17],cod_img,players.Posición[17])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[18],cod_img,players.Posición[18])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[19],cod_img,players.Posición[19])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[20],cod_img,players.Posición[20])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[21],cod_img,players.Posición[21])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[22],cod_img,players.Posición[22])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[23],cod_img,players.Posición[23])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[24],cod_img,players.Posición[24])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[25],cod_img,players.Posición[25])],className='carta_player_button'),
+        html.Div([cartas_jugador(players.Jugador[26],cod_img,players.Posición[26])],className='carta_player_button'),
+        ],className='row')
 ])
