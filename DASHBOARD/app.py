@@ -2,8 +2,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output, callback
-from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,España,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabic,Marocco,Mexico,Netherlands,Polond,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
-
+from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabic,Marocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
 # bootstrap theme
 # https://bootswatch.com/lux/
 external_stylesheets = [dbc.themes.BOOTSTRAP]  
@@ -17,8 +16,6 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
 ])
-
-list=['Argentina','Australia','Belgium','Brazil','Canada','Cameroon','Costa_Rica','Croatia', 'Denmark', 'Ecuador','England','España','France','Germany','Ghana','Iran','Japan','Korea_Republic','Saudi_Arabic','Marocco','Mexico','Netherlands','Polond','Portugal','Qatar','Senegal','Serbia','Switzerland','Tunisia','Uruguay','United_States','Wales']
 
 @callback(Output('page-content', 'children'),
             Input('url', 'pathname'))
@@ -37,7 +34,7 @@ def display_page(pathname):
         return Canada.layout
     elif pathname == '/Cameroon':
         return Cameroon.layout
-    elif pathname == '/Costa_Rica':
+    elif pathname == '/Costa%20Rica':
         return Costa_Rica.layout
     elif pathname == '/Croatia':
         return Croatia.layout
@@ -47,8 +44,8 @@ def display_page(pathname):
         return Ecuador.layout
     elif pathname == '/England':
         return England.layout
-    elif pathname == '/España':
-        return España.layout
+    elif pathname == '/Spain':
+        return Spain.layout
     elif pathname == '/France':
         return France.layout
     elif pathname == '/Germany':
@@ -59,9 +56,9 @@ def display_page(pathname):
         return Iran.layout
     elif pathname == '/Japan':
         return Japan.layout
-    elif pathname == '/Korea_Republic':
+    elif pathname == '/Korea%20Republic':
         return Korea_Republic.layout
-    elif pathname == '/Saudi_Arabic':
+    elif pathname == '/Saudi%20Arabic':
         return Saudi_Arabic.layout
     elif pathname == '/Marocco':
         return Marocco.layout
@@ -69,8 +66,8 @@ def display_page(pathname):
         return Mexico.layout
     elif pathname == '/Netherlands':
         return Netherlands.layout
-    elif pathname == '/Polond':
-        return Polond.layout
+    elif pathname == '/Poland':
+        return Poland.layout
     elif pathname == '/Portugal':
         return Portugal.layout
     elif pathname == '/Qatar':
@@ -85,7 +82,7 @@ def display_page(pathname):
         return Tunisia.layout
     elif pathname == '/Uruguay':
         return Uruguay.layout
-    elif pathname == '/United_States':
+    elif pathname == '/United%20States':
         return United_States.layout
     elif pathname == '/Wales':
         return Wales.layout
