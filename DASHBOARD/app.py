@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 
 # bootstrap theme
 # https://bootswatch.com/lux/
-external_stylesheets = [dbc.themes.LUX]  
+external_stylesheets = [dbc.themes.BOOTSTRAP]  
 # external_stylesheets = [dbc.themes.SANDSTONE]
 
 
