@@ -110,7 +110,7 @@ def display_page(pathname):
     if pathname == '/Confederations':
         return Confederations.layout
     else:
-        return Confederations.layout
+        return home.layout
 
 if __name__ == '__main__':
     app.run_server(host='127.0.0.1', debug=True)
