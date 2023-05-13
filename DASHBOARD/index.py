@@ -86,7 +86,6 @@ def display_page(pathname):
         return FIFA_WORLD_CUP_2022.layout
     else:
         return home.layout
-   
 
 
 
