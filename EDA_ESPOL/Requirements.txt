@@ -1,9 +1,0 @@
-pandas
-numpy
-plotly
-seaborn
-cufflinks
-matplotlib
-openpyxl
-dash
-nbformat>=4.2.0
