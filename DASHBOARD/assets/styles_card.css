@@ -1,0 +1,60 @@
+.carta_player_button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://static.wefut.com/assets/images/fut23/gold128.png?205);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    }
+.carta_player_button:hover{
+        transform: scale(1.1);
+    }
+.carta_player_button:active{
+        transform: scale(0.9);
+    }
+.carta_player_button .img_player{
+        width: 6vw;
+        height: 6vw;
+        border-radius: 2vw;
+    }
+.carta_player_button .img_player img{
+        width: 100%;
+        height: 100%;
+        border-radius: 2vw;
+    }
+.carta_player_button .img_team{
+        width: 2vw;
+        height: 2vw;
+        border-radius: 2vw;
+    }
+.text_pos p{
+        font-size: 12px;
+        font-weight: bold;
+        color: #000;
+    }
+.text_name{
+    font-size: 8px;
+    font-weight: bold;
+    color: #e9cc74;
+}
+.button{
+    border: none;
+    background: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+}
+.text_name_do{
+    font-size: 7px;
+    font-weight: bold;
+    color: #e9cc74;
+}
