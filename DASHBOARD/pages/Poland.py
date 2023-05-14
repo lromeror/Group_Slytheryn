@@ -134,7 +134,7 @@ layout = html.Div([
         cartas_jugador(players.Jugador[3],cod_img,players.Posición[3]),
         cartas_jugador(players.Jugador[4],cod_img,players.Posición[4]),
         cartas_jugador(players.Jugador[5],cod_img,players.Posición[5]),
-        cartas_jugador(players.Jugador[6],cod_img,players.Posición[6]),
+        cartas_jugador_dominguez(players.Jugador[6],cod_img,players.Posición[6]),
         cartas_jugador(players.Jugador[7],cod_img,players.Posición[7]),
         cartas_jugador(players.Jugador[8],cod_img,players.Posición[8]),
         cartas_jugador(players.Jugador[9],cod_img,players.Posición[9]),

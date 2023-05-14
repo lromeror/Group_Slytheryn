@@ -101,6 +101,17 @@ def cartas_jugador_manual(name,link_img,cod_img,posicion):
     html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
     ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
     return card
+def cartas_jugador_dominguez(name,cod_img,posicion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
+    html.Div([html.P(name)],className='text_name_do'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
 layout = html.Div([
     html.Div(
     [navbar]),
@@ -132,6 +143,6 @@ layout = html.Div([
         cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
         cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
-        cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
+        cartas_jugador_dominguez(players.Jugador[26],cod_img,players.Posición[26]),
         ],className='row')
 ])
