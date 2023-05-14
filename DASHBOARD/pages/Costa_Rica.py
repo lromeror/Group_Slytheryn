@@ -78,7 +78,7 @@ folder_img_players = f'assets/Images/{pais}'
 folder_img_seleccion = f'assets/Selecciones'
 #players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{pais}')
 players=pd.read_csv('DASHBOARD/assets/Renombrar - jonathan.csv',sep=';')
-players=players[players.PAIS==pais]
+players=players[players.PAIS==pais].reset_index()
 def cartas_jugador(name,cod_img,posicion):
     card = html.Div([
     html.Button([
