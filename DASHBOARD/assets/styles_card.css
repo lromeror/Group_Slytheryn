@@ -39,7 +39,10 @@
 .text_pos p{
         font-size: 12px;
         font-weight: bold;
-        color: #000;
+        background-color:  #9c1434 ;
+        color: #e9cc74;
+        border-radius: 2vw;
+
     }
 .text_name{
     font-size: 8px;
@@ -62,4 +65,44 @@
     font-size: 6px;
     font-weight: bold;
     color: #e9cc74;
+}
+.container_plantilla{
+    margin: 3vw 2vw 3vw 2vw;
+    border-color: gray;
+    border-width: 1px;
+    border-style: dotted;
+    border-radius:  2vw;
+    background-image: url('https://img.freepik.com/fotos-premium/campo-futbol-pasto-verde-fondo-cesped-deportivo_355067-360.jpg?w=2000');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carta_player_button{
+    margin-top: 2vw;
+}
+.div_container_selec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+}
+.div_container_selec H4{
+   text-align: center;
+   margin-top: 1vw;
+}
+.container_selec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.div_container_selec img{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 2vw;
 }
