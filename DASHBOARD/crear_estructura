@@ -2,3 +2,4 @@ list=['Argentina','Australia','Belgium','Brazil','Canada','Cameroon','Costa_Rica
 for x in list:
     print(f"elif pathname == '/{x}':")
     print("    return "+x+".layout")
+https://meet.google.com/kvo-dtqx-ftc
