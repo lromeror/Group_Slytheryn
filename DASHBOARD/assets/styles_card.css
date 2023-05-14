@@ -53,3 +53,8 @@
     align-items: stretch;
     justify-content: stretch;
 }
+.text_name_do{
+    font-size: 7px;
+    font-weight: bold;
+    color: #e9cc74;
+}

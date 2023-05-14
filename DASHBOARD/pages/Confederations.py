@@ -1,7 +1,6 @@
 import plotly.express as px
 import pandas as pd
 
-import dash
 from dash import Dash, dcc, html,callback
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
