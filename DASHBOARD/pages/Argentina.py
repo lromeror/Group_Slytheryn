@@ -76,7 +76,7 @@ df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
 cod_img = df_img_team[df_img_team['seleccion']==pais]['team'].values[0]
 folder_img_players = f'assets/Images/{pais}'
 folder_img_seleccion = f'assets/Selecciones'
-players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name='Argentina')
+players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{pais}')
 players.replace('Mediocampista','Mediocampo',inplace=True)
 def cartas_jugador(name,cod_img,posicion):
     card = html.Div([
@@ -93,7 +93,7 @@ def cartas_jugador(name,cod_img,posicion):
 layout = html.Div([
     html.Div(
     [navbar]),
-    html.Div('Bienvenido a Argentina'),
+    html.Div(f'Bienvenido a {pais}'),
     html.Div([
         cartas_jugador(players.Jugador[0],cod_img,players.Posición[0]),
         cartas_jugador(players.Jugador[1],cod_img,players.Posición[1]),

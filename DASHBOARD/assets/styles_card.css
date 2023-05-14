@@ -11,7 +11,7 @@
     height: 150px;
     margin: 0 auto;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     }
@@ -22,8 +22,8 @@
         transform: scale(0.9);
     }
 .carta_player_button .img_player{
-        width: 5vw;
-        height: 5vw;
+        width: 6vw;
+        height: 6vw;
         border-radius: 2vw;
     }
 .carta_player_button .img_player img{
@@ -42,7 +42,7 @@
         color: #000;
     }
 .text_name{
-    font-size: 9px;
+    font-size: 8px;
     font-weight: bold;
     color: #e9cc74;
 }
