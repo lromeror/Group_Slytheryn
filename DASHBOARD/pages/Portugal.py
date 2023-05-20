@@ -78,6 +78,7 @@ folder_img_players = f'assets/Images/{pais}'
 folder_img_seleccion = f'assets/Selecciones'
 players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{pais}')
 players.replace('Volante','Mediocampo',inplace=True)
+players.replace('Mediocampista','Mediocampo',inplace=True)
 def cartas_jugador(name,cod_img,posicion):
     card = html.Div([
     html.Button([
@@ -114,7 +115,13 @@ def cartas_jugador_manual2(name,name_2,cod_img,posicion):
 layout = html.Div([
     html.Div(
     [navbar]),
-    html.Div(f'Bienvenido a {pais}'),
+    html.Div([
+        html.Div([
+            html.H4(f'{pais.upper()}'),
+            html.Img(src= f'assets/Selecciones/{cod_img}'),
+            html.H4('PLANTILLA')
+        ],className='div_container_selec')
+    ],className='container_selec'),
     html.Div([
         cartas_jugador(players.Jugador[0],cod_img,players.Posición[0]),
         cartas_jugador(players.Jugador[1],cod_img,players.Posición[1]),
@@ -143,5 +150,5 @@ layout = html.Div([
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
         cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
         cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
-        ],className='row')
+        ],className='row container_plantilla')
 ])
