@@ -1,4 +1,4 @@
-pais='Saudi Arabia'
+pais='Saudi_Arabia'
 import plotly.express as px
 import pandas as pd
 
@@ -79,6 +79,7 @@ folder_img_seleccion = f'assets/Selecciones'
 players=pd.read_csv('DASHBOARD/assets/datas/Selecciones_mundial2022_.csv',sep=';')
 players=players[players.PAIS==pais].reset_index()
 players.replace('Mediocampista','Mediocampo',inplace=True)
+players.replace('Volante','Mediocampo',inplace=True)
 def cartas_jugador(name,cod_img,posicion):
     card = html.Div([
     html.Button([
@@ -127,7 +128,5 @@ layout = html.Div([
         cartas_jugador(players.Jugador[22],cod_img,players.Posición[22]),
         cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
-        cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
-        cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
         ],className='row container_plantilla')
 ])

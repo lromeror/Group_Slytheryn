@@ -2,7 +2,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output, callback
-from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabic,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
+from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
 # bootstrap theme
 # https://bootswatch.com/lux/
 external_stylesheets = [dbc.themes.BOOTSTRAP]  
@@ -58,8 +58,8 @@ def display_page(pathname):
         return Japan.layout
     elif pathname == '/Korea%20Republic':
         return Korea_Republic.layout
-    elif pathname == '/Saudi%20Arabic':
-        return Saudi_Arabic.layout
+    elif pathname == '/Saudi_Arabia':
+        return Saudi_Arabia.layout
     elif pathname == '/Morocco':
         return Morocco.layout
     elif pathname == '/Mexico':
