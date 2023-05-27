@@ -11,7 +11,7 @@ paises=['Ecuador','Argentina','Australia', 'Wales', 'Morocco', 'Qatar', 'Senegal
 #['Ecuador','Argentina','Wales','Uruguay'] paises ya hechos
 #['Spain','Portugal'] 
 #['Mexico','Korea Republic','Qatar','Brazil','Japan']
-df_img_codes = pd.read_csv('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/datas/paises_excel_27_5.csv',sep=',')
+df_img_codes = pd.read_csv('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/datas/paises_excel_27_5.csv')
 #df_img_codes = pd.read_excel('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/datas/paises_excel_27_5.xlsx',sheet_name='Hoja1')
 for pais in  ['Canada','Serbia','Senegal','United States','Tunisia']:
     df_f = df_img_codes[df_img_codes['PAIS'] == pais].reset_index(drop=True)
