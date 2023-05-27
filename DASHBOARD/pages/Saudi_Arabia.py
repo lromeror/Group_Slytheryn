@@ -114,9 +114,9 @@ layout = html.Div([
     ],className='container_selec'),
     html.Div([
         cartas_jugador(players.Jugador[0],cod_img,players.Posición[0]),
-        cartas_jugador(players.Jugador[1],cod_img,players.Posición[1]),
+        cartas_jugador_polonia(players.Jugador[1],cod_img,players.Posición[1]),
         cartas_jugador_polonia(players.Jugador[2],cod_img,players.Posición[2]),
-        cartas_jugador_polonia(players.Jugador[3],cod_img,players.Posición[3]),
+        cartas_jugador(players.Jugador[3],cod_img,players.Posición[3]),
         cartas_jugador(players.Jugador[4],cod_img,players.Posición[4]),
         cartas_jugador(players.Jugador[5],cod_img,players.Posición[5]),
         cartas_jugador(players.Jugador[6],cod_img,players.Posición[6]),
@@ -135,8 +135,11 @@ layout = html.Div([
         cartas_jugador(players.Jugador[19],cod_img,players.Posición[19]),
         cartas_jugador(players.Jugador[20],cod_img,players.Posición[20]),
         cartas_jugador(players.Jugador[21],cod_img,players.Posición[21]),
-        cartas_jugador(players.Jugador[22],cod_img,players.Posición[22]),
+        cartas_jugador_polonia(players.Jugador[22],cod_img,players.Posición[22]),
         cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
+        cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
+        cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
+        cartas_jugador(players.Jugador[27],cod_img,players.Posición[27]),
         ],className='row container_plantilla')
 ])
