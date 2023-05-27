@@ -12,8 +12,8 @@ paises=['Ecuador','Argentina','Australia', 'Wales', 'Morocco', 'Qatar', 'Senegal
 #['Spain','Portugal'] 
 #['Mexico','Korea Republic','Qatar','Brazil','Japan']
 #df_img_codes = pd.read_csv('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/Data_worldCup/Images_country.csv',sep=';')
-df_img_codes = pd.read_excel('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/datas/Selecciones_mundial2022_.xlsx',sheet_name='Hoja1')
-for pais in  ['Australia','Cameroon','Belgium','England','Morocco','Saudi Arabia']:
+df_img_codes = pd.read_csv('/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/datas/Selecciones_mundial2022_.csv',sep=';')
+for pais in  ['Australia','Cameroon','Belgium','England','Morocco','Saudi_Arabia']:
     df_f = df_img_codes[df_img_codes['PAIS']==pais]
     for actual,nuevo in zip(df_f['ACTUAL '],df_f.NUEVO):
         try :
