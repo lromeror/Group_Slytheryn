@@ -139,6 +139,6 @@ layout = html.Div([
         cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
         cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
-        cartas_jugador_img_smaller(players.Jugador[26],cod_img,players.Posición[26]),
+        cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
         ],className='row container_plantilla')
 ])

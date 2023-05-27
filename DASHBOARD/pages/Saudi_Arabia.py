@@ -91,7 +91,17 @@ def cartas_jugador(name,cod_img,posicion):
     html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
     ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
     return card
-
+def cartas_jugador_polonia(name,cod_img,posicion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
+    html.Div([html.P(name)],className='text_name_po'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
 layout = html.Div([
     html.Div(
     [navbar]),
@@ -105,8 +115,8 @@ layout = html.Div([
     html.Div([
         cartas_jugador(players.Jugador[0],cod_img,players.Posición[0]),
         cartas_jugador(players.Jugador[1],cod_img,players.Posición[1]),
-        cartas_jugador(players.Jugador[2],cod_img,players.Posición[2]),
-        cartas_jugador(players.Jugador[3],cod_img,players.Posición[3]),
+        cartas_jugador_polonia(players.Jugador[2],cod_img,players.Posición[2]),
+        cartas_jugador_polonia(players.Jugador[3],cod_img,players.Posición[3]),
         cartas_jugador(players.Jugador[4],cod_img,players.Posición[4]),
         cartas_jugador(players.Jugador[5],cod_img,players.Posición[5]),
         cartas_jugador(players.Jugador[6],cod_img,players.Posición[6]),
