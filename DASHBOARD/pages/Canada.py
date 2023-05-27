@@ -74,12 +74,11 @@ navbar = dbc.Navbar(
 )
 df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
 cod_img = df_img_team[df_img_team['seleccion']==pais]['team'].values[0]
-folder_img_players = f'assets/Images/Saudi_Arabia'
+folder_img_players = f'assets/Images/{pais}'
 folder_img_seleccion = f'assets/Selecciones'
-players=pd.read_csv('DASHBOARD/assets/datas/paises_excel_27_5.csv',sep=';')
-players=players[players.PAIS==pais].reset_index()
-players.replace('Mediocampista','Mediocampo',inplace=True)
+players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{pais}')
 players.replace('Volante','Mediocampo',inplace=True)
+players.replace('Mediocampista','Mediocampo',inplace=True)
 def cartas_jugador(name,cod_img,posicion):
     card = html.Div([
     html.Button([
@@ -91,7 +90,28 @@ def cartas_jugador(name,cod_img,posicion):
     html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
     ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
     return card
-
+def cartas_jugador_manual(name,link_img,cod_img,posicion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=link_img,className='img_player')],className=''),
+    html.Div([html.P(name)],className='text_name'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
+def cartas_jugador_manual2(name,name_2,cod_img,posicion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
+    html.Div([html.P(name_2)],className='text_name'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
 layout = html.Div([
     html.Div(
     [navbar]),
@@ -128,5 +148,7 @@ layout = html.Div([
         cartas_jugador(players.Jugador[22],cod_img,players.Posición[22]),
         cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
         cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
+        cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
+        cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
         ],className='row container_plantilla')
 ])
