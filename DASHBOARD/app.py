@@ -2,7 +2,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output, callback
-from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
+from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1,Estadisticas
 # bootstrap theme
 # https://bootswatch.com/lux/
 external_stylesheets = [dbc.themes.BOOTSTRAP]  
@@ -22,6 +22,8 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == '/Confederations':
         return Confederations.layout
+    if pathname == '/Estadisticas':
+        return Estadisticas.layout
     elif pathname == '/Argentina':
         return Argentina.layout
     elif pathname == '/Australia':

@@ -50,6 +50,17 @@ navbar = dbc.Navbar(
                 href="/Confederations",
                 style={"textDecoration": "none"},
             ),
+            dcc.Link(
+                dbc.Row(
+                    [
+                        html.P('ESTADISTICS'),
+                    ],
+                    align="center",
+                    className="g-0", 
+                ),
+                href="/Estadisticas",
+                style={"textDecoration": "none"},
+            ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 search_bar,
