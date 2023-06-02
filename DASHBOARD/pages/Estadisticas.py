@@ -5,7 +5,7 @@ from dash import Input, Output, State, html
 import os
 import pandas as pd 
 import numpy as np
-
+import Dashboard_functions as dash_fun
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -76,21 +76,19 @@ navbar = dbc.Navbar(
     dark=True,
 )
 PAGES_DIR = os.path.dirname(__file__)
-APP_DIR = os.path.abspath(os.path.dirname(PAGES_DIR))
-ASSETS_DIR = os.path.join(APP_DIR,'assets')
+APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
+ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
+print(ASSETS_DIR)
 DATAS_DIR = os.path.join(ASSETS_DIR,'datas')
 IMAGES_DIR = os.path.join(ASSETS_DIR,'Selecciones')
+#DATAS_DIR = '../assets/datas'
+IMAGES_DIR = '../assets/Selecciones'
 #print(IMAGES_DIR)
-DIR= os.path.join(DATAS_DIR, "selecciones.csv")
-df_img_team = pd.read_csv(DIR,sep=';')
+df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=';')
 Id_team = df_img_team['team'].tolist()
 countries = dbc.Container([
-    dbc.Row([
-        dbc.Col([html.Img(src="/Users/angelozurita/Repositorios_GitHub/Group_Slytheryn/DASHBOARD/assets/Selecciones/ARG.png")],md=4),
+
     ])
-])
-print(os.path.join(IMAGES_DIR,Id_team[0]))
-print(os.path.join(os.path.relpath(IMAGES_DIR),Id_team[0]))
 
 #folder=r"C:/Users/Jonanyu 11.1/Desktop/img"
 #os.path.join(folder,"cm1.jpg")

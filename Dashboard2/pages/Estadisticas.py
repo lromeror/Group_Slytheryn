@@ -88,7 +88,7 @@ DIR= os.path.join(DATAS_DIR, "selecciones.csv")
 
 countries = dbc.Container([
     dbc.Row([
-        dbc.Col([html.Img(src='Dashboard2/assets/Selecciones/ARG.png')],md=4),
+        dbc.Col([html.Img(src='../assets/Selecciones/ARG.png')],md=4),
     ])
 ])
 
