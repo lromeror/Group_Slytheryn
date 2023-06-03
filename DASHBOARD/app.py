@@ -1,4 +1,4 @@
-
+    
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output, callback
@@ -6,7 +6,7 @@ from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica
 # bootstrap theme
 # https://bootswatch.com/lux/
 external_stylesheets = [dbc.themes.BOOTSTRAP]  
-# external_stylesheets = [dbc.themes.SANDSTONE]
+
 app = Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=external_stylesheets,use_pages=True)
 server = app.server
 
@@ -92,4 +92,4 @@ def display_page(pathname):
         return home1.layout
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True,port=8050)
