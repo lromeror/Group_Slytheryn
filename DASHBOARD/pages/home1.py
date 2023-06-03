@@ -57,7 +57,7 @@ navbar1 = dbc.Navbar(
     Output("navbar-collapse", "is_open",allow_duplicate=True),
     [Input("navbar-toggler", "n_clicks")],
     [State("navbar-collapse", "is_open")],
-    prevent_initial_call=True,
+    prevent_initial_call='initial_duplicate'
 )
 def toggle_navbar_collapse(n, is_open):
 
@@ -75,11 +75,10 @@ navbar2 = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
-                      
-                       
                         
                     ],
                     align="right",
@@ -136,7 +135,7 @@ space_im=dbc.Row(
 
 
 layout = html.Div(
-    [navbar1, navbar2,carousel,space_im]
+    [navbar1, navbar2,carousel]
     
     
 )

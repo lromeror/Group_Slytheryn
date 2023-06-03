@@ -3,7 +3,11 @@ from dash import Dash, html
 import os 
 
 def country_flag(IMAGES_DIR,Id_team):
-    country_flag = dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,Id_team),className='img-fluid img-thumbnail')])
+    country_flag = dbc.Col(dbc.Button(
+                            [html.Img(src=os.path.join(IMAGES_DIR,Id_team),className='img-fluid img-thumbnail')],
+                            id = Id_team.split('.')[0],
+                            className="btn btn-link btn_back"),
+                            )
     return country_flag
 
 def rows_countries_flags(IMAGES_DIR,Id_team,list_id_images):  
@@ -18,23 +22,8 @@ def rows_countries_flags(IMAGES_DIR,Id_team,list_id_images):
         country_flag(IMAGES_DIR,Id_team[list_id_images[5]]),
         country_flag(IMAGES_DIR,Id_team[list_id_images[6]]),
         country_flag(IMAGES_DIR,Id_team[list_id_images[7]]),
-       
         ])]
     )
-    return  rows_countries
-
-
-def rows_countries_flags_last(IMAGES_DIR,Id_team,list_id_images):   
-    rows_countries = dbc.Row([
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],width=1)
-    ],className='row')
     return  rows_countries
 
 def div_countries (IMAGES_DIR,Id_team,list_list_id_images):
@@ -42,55 +31,6 @@ def div_countries (IMAGES_DIR,Id_team,list_list_id_images):
         rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[0]),
         rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[1]),
         rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[2]),
-       
+        rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[3])
     ])
     return div_countries
-
-"""import dash_bootstrap_components as dbc
-from dash import Dash, html
-import os 
-
-def country_flag(IMAGES_DIR,Id_team):
-    country_flag = dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,Id_team),className='img-fluid img-thumbnail')])
-    return country_flag
-
-def rows_countries_flags(IMAGES_DIR,Id_team,list_id_images):  
-    
-    rows_countries = dbc.Container(
-        [dbc.Row([
-        country_flag(IMAGES_DIR,Id_team[list_id_images[0]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[1]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[2]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[3]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[4]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[5]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[6]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[7]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[8]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[9]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[10]]),
-        country_flag(IMAGES_DIR,Id_team[list_id_images[11]])])]
-    )
-    return  rows_countries
-
-
-def rows_countries_flags_last(IMAGES_DIR,Id_team,list_id_images):   
-    rows_countries = dbc.Row([
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],width=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],width=1),
-    ],className='row')
-    return  rows_countries
-
-def div_countries (IMAGES_DIR,Id_team,list_list_id_images):
-    div_countries = dbc.Container([
-        rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[0]),
-        rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[1]),
-        rows_countries_flags_last(IMAGES_DIR,Id_team,list_list_id_images[2])
-    ])
-    return div_countries"""

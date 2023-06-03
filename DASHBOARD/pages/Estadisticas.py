@@ -75,6 +75,45 @@ navbar = dbc.Navbar(
     color="#FFD500",
     dark=True,
 )
+navbar2 = dbc.Navbar(
+    dbc.Container(
+        [
+            html.A(
+                # Use row and col to control vertical alignment of logo / brand
+                dbc.Row(
+                    [
+                        dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
+                        #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
+                      
+                       
+                        
+                    ],
+                    align="right",
+                    className="g-0",
+                ),
+                #href="https://plotly.com",
+                #style={"textDecoration": "none"},
+            ),
+            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+            dbc.Collapse(
+          
+                id="navbar-collapse1",
+                is_open=False,
+                navbar=True,
+            ),
+        ]
+    ),
+    color="dark",
+    dark=True,
+)
+
+user_country = dbc.Container([
+    dbc.Row([
+        html.H2('SELECCIONE UN PAIS ',style={'margin':'1vw  0 1vw  0'}),
+    ])
+])
 PAGES_DIR = os.path.dirname(__file__)
 APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
 ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
@@ -84,15 +123,19 @@ IMAGES_DIR = '../assets/Selecciones'
 
 df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=';')
 Id_team = df_img_team['team'].tolist()
-list_list_id_images = [[0,1,2,3,4,5,6,7],[8,9,10,11,12,13,14,16],[17,18,19,20,21,22,23,24],[25,26,27,28,29,30,31,32]]
+list_list_id_images = [[0,1,2,3,4,5,6,7],[8,9,10,11,12,13,14,15],[16,17,18,19,20,21,22,23],[24,25,26,27,28,29,30,31]]
+
 countries = dbc.Container([
     div_countries (IMAGES_DIR,Id_team,list_list_id_images)
     ])
 
+stadistics_country = dbc.Container(
+    id ='conatainer_country'
+)
+#@callback()
 
 layout = html.Div(
-    [navbar,countries]
-
+    [navbar,navbar2,user_country,countries]
 
 )
 
