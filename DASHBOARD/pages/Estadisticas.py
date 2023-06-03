@@ -5,7 +5,7 @@ from dash import Input, Output, State, html
 import os
 import pandas as pd 
 import numpy as np
-import Functions
+from .Functions import div_countries
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -78,9 +78,7 @@ navbar = dbc.Navbar(
 PAGES_DIR = os.path.dirname(__file__)
 APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
 ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
-print(ASSETS_DIR)
 DATAS_DIR = os.path.join(ASSETS_DIR,'datas')
-IMAGES_DIR = os.path.join(ASSETS_DIR,'Selecciones')
 #DATAS_DIR = '../assets/datas'
 IMAGES_DIR = '../assets/Selecciones'
 #print(IMAGES_DIR)
@@ -88,7 +86,7 @@ df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=';')
 Id_team = df_img_team['team'].tolist()
 list_list_id_images = [[0,1,2,3,4,5,6,7,8,9,10,11],[12,13,14,15,16,17,18,19,20,21,22,23],[24,25,26,27,28,29,30,31]]
 countries = dbc.Container([
-    Functions.div_countries (IMAGES_DIR,Id_team,list_list_id_images)
+    div_countries (IMAGES_DIR,Id_team,list_list_id_images)
     ])
 
 #folder=r"C:/Users/Jonanyu 11.1/Desktop/img"
@@ -98,4 +96,4 @@ layout = html.Div(
     #html.Img(children=os.path.join(folder,"cm1.jpg"))
 
 )
-print(list_list_id_images[1])
+
