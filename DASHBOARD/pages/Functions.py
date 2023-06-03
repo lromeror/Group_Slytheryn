@@ -8,30 +8,30 @@ def country_flag(IMAGES_DIR,Id_team):
 
 def rows_countries_flags(IMAGES_DIR,Id_team,list_id_images):   
     rows_countries = dbc.Row([
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[8]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[9]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[10]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[11]])],md=1)])
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[8]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[9]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[10]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[11]])],className='col')])
     return  rows_countries
 
 def rows_countries_flags_last(IMAGES_DIR,Id_team,list_id_images):   
     rows_countries = dbc.Row([
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],md=1),
-        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],md=1),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[0]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[1]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[2]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[3]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[4]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[5]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[6]])],className='col'),
+        dbc.Col([country_flag(IMAGES_DIR,Id_team[list_id_images[7]])],className='col'),
     ])
     return  rows_countries
 
