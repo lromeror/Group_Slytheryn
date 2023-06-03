@@ -78,8 +78,8 @@ navbar = dbc.Navbar(
 PAGES_DIR = os.path.dirname(__file__)
 APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
 ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
-#DATAS_DIR = os.path.join(ASSETS_DIR,'datas')
-DATAS_DIR = '../assets/datas'
+DATAS_DIR = os.path.relpath(os.path.join(ASSETS_DIR,'datas'))
+#DATAS_DIR = '../assets/datas'
 IMAGES_DIR = '../assets/Selecciones'
 #print(IMAGES_DIR)
 df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=';')
