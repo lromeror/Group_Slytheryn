@@ -81,7 +81,7 @@ ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
 DATAS_DIR = os.path.relpath(os.path.join(ASSETS_DIR,'datas'))
 #DATAS_DIR = '../assets/datas'
 IMAGES_DIR = '../assets/Selecciones'
-#print(IMAGES_DIR)
+
 df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=';')
 Id_team = df_img_team['team'].tolist()
 list_list_id_images = [[0,1,2,3,4,5,6,7,8,9,10,11],[12,13,14,15,16,17,18,19,20,21,22,23],[24,25,26,27,28,29,30,31]]
