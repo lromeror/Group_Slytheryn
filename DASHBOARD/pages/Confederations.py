@@ -6,7 +6,8 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 import os 
-from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
+from pages import Confederations,home1,Estadisticas
+#from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1
 
 # building the navigation bar
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py

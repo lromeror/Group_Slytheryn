@@ -5,7 +5,7 @@ import os
 def country_flag(IMAGES_DIR,Id_team):
     country_flag = dbc.Col(dbc.Button(
                             [html.Img(src=os.path.join(IMAGES_DIR,Id_team),className='img-fluid img-thumbnail')],
-                            id = Id_team.split('.')[0],
+                            id = Id_team[0],
                             className="btn btn-link btn_back"),
                             )
     return country_flag
