@@ -106,7 +106,7 @@ carousel = dbc.Carousel(
 #Hay 5 confederaciones 
 folder_images = 'assets/Selecciones'
 folder_confe = 'assets/Confederaciones'
-df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
+df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
 def contruir_seccion_confederation(df):
     for confederation in df.continente.unique(): #en el data set la columna continente esta la clasificacion por confederación
         df_f = df[df.continente==confederation]

@@ -5,7 +5,7 @@ import os
 def country_flag(IMAGES_DIR,Id_team):
     country_flag = dbc.Col(dbc.Button(
                             [html.Img(src=os.path.join(IMAGES_DIR,Id_team),className='img-fluid img-thumbnail')],
-                            id = Id_team[0],
+                            id = Id_team.split('.')[0],
                             className="btn btn-link btn_back"),
                             )
     return country_flag
@@ -36,11 +36,11 @@ def div_countries (IMAGES_DIR,Id_team,list_list_id_images):
     return div_countries
 
 def country_flag_name(pais,cod_img,IMAGES_DIR):
-    country_flag_name = dbc.Container([
+    country_flag_name_c = dbc.Container([
         dbc.Container([
             html.H4(f'{pais.upper()}'),
             html.Img(src= os.path.join(IMAGES_DIR,cod_img)),
             html.H4('PLANTILLA')
         ],className='div_container_selec')
     ],className='container_selec'),
-    return country_flag_name
+    return country_flag_name_c
