@@ -34,3 +34,13 @@ def div_countries (IMAGES_DIR,Id_team,list_list_id_images):
         rows_countries_flags(IMAGES_DIR,Id_team,list_list_id_images[3])
     ])
     return div_countries
+
+def country_flag_name(pais,cod_img,IMAGES_DIR):
+    country_flag_name = dbc.Container([
+        dbc.Container([
+            html.H4(f'{pais.upper()}'),
+            html.Img(src= os.path.join(IMAGES_DIR,cod_img)),
+            html.H4('PLANTILLA')
+        ],className='div_container_selec')
+    ],className='container_selec'),
+    return country_flag_name
