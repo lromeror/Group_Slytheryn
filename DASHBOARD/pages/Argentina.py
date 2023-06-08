@@ -72,7 +72,7 @@ navbar = dbc.Navbar(
     color="#FFD500",
     dark=True,
 )
-df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
+df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
 cod_img = df_img_team[df_img_team['selecciones']==pais]['team'].values[0]
 folder_img_players = f'assets/Images/{pais}'
 folder_img_seleccion = f'assets/Selecciones'

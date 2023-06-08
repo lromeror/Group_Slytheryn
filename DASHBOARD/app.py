@@ -26,8 +26,8 @@ def display_page(pathname):
     if pathname == '/Estadisticas':
         return Estadisticas.layout
     else:
-        return home1.layout
-"""elif pathname == '/Argentina':
+        return home1.layout;
+"""    elif pathname == '/Argentina':
         return Argentina.layout
     elif pathname == '/Australia':
         return Australia.layout

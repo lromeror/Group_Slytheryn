@@ -171,10 +171,16 @@ stadistics_country = dbc.Container(
 )
 def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31):
     triggered_id = ctx.triggered_id
-    pais = df_img_team[df_img_team['cod_img']==triggered_id].iloc[:,2].values[0]
-    if triggered_id =='ARG':
-        return html.H4(f'{pais}')
-    elif triggered_id == 'AUS':
+    #print(triggered_id)
+    #pais = df_img_team[df_img_team['cod_img']==triggered_id]['seleccion']
+    if triggered_id !=  None :
+        pais = df_img_team[df_img_team.cod_img==triggered_id]['seleccion'].values[0]
+    abreviaturas = df_img_team['cod_img'].tolist()
+    abreviaturas.append(None)
+    pos = abreviaturas.index(triggered_id)
+    if triggered_id ==  None:
+        return html.H4(" ")
+    elif triggered_id ==abreviaturas[pos]:
         return html.H4(f'{pais}')
 """"
     country_flag_name_c = country_flag_name(pais,pais_png,IMAGES_DIR)"""
