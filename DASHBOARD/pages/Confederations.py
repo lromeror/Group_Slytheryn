@@ -16,7 +16,7 @@ nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
 
-PLOTLY_LOGO = "https://cdn.cookielaw.org/logos/a22264f8-9d14-4ab8-ab4b-a61925d0e901/6b589592-a31b-4ede-9440-c6368b1eb13b/d0426540-ceee-4ccb-b321-ac2656d493bb/fcm_rgbf_s.png"
+"""PLOTLY_LOGO = "https://cdn.cookielaw.org/logos/a22264f8-9d14-4ab8-ab4b-a61925d0e901/6b589592-a31b-4ede-9440-c6368b1eb13b/d0426540-ceee-4ccb-b321-ac2656d493bb/fcm_rgbf_s.png"
 
 search_bar = dbc.Row(
     [
@@ -30,9 +30,9 @@ search_bar = dbc.Row(
     ],
     className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
     align="center",
-)
+)"""
 
-navbar = dbc.Navbar(
+"""navbar = dbc.Navbar(
     dbc.Container(
         [
             html.A(
@@ -80,9 +80,9 @@ navbar = dbc.Navbar(
     ),
     color="#FFD500",
     dark=True,
-)
+)"""
 
-@callback(
+"""@callback(
     Output("navbar-collapse", "is_open",),
     [Input("navbar-toggler", "n_clicks")],
     [State("navbar-collapse", "is_open")],
@@ -217,11 +217,11 @@ def contruir_seccion_confederation(df):
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
     return UEFA,AFC,CAF,CONMEBOL,CONCACAF
-UEFA,AFC,CAF,CONMEBOL,CONCACAF = contruir_seccion_confederation(df_img_team)
+UEFA,AFC,CAF,CONMEBOL,CONCACAF = contruir_seccion_confederation(df_img_team)"""
 
-layout = html.Div([
+"""layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(
     [navbar,UEFA,AFC,CAF,CONMEBOL,CONCACAF])
 ])
-
+"""
