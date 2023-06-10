@@ -120,6 +120,7 @@ APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
 ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
 DATAS_DIR = os.path.relpath(os.path.join(ASSETS_DIR,'datas'))
 #DATAS_DIR = '../assets/datas'
+PLAYER_DIR  = '../assets/Images'
 IMAGES_DIR = '../assets/Selecciones'
 
 df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=",")

@@ -61,8 +61,8 @@ def cartas_jugador(name,cod_img,posicion):
 
 def Lineup():
     return None
-def Lineup_players(name,cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR):
-    folder_img_players = f'assets/Images/{country}'
+def Lineup_players(name,cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR):
+    folder_img_players = os.path.join(PLAYER_DIR,country)
     folder_img_seleccion = f'assets/Selecciones'
     players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{country}')
     def cartas_jugador(name,cod_img,posicion):
