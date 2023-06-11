@@ -280,7 +280,6 @@ layout = html.Div([
     dcc.Location(id='url', refresh=False),
     dbc.Container(
     [navbar1, navbar2,carousel,UEFA],className="")
-=======
 #navbarConfederations = dbc.Navbar(
 #    dbc.Container(
 #        [
@@ -417,6 +416,5 @@ layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(
     [navbar1, navbar2])
->>>>>>> c026083716ff4767b9e6ba3ed184e8b5e4395a7e
 ])
 
