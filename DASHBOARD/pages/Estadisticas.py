@@ -6,7 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
-from .Functions import div_countries, country_flag_name
+from .Functions import div_countries, country_flag_name, Lineup_players
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -176,14 +176,14 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
     #pais = df_img_team[df_img_team['cod_img']==triggered_id]['seleccion']
     if triggered_id !=  None :
         country = df_img_team[df_img_team.cod_img==triggered_id]['seleccion'].values[0]
+        cod_img = triggered_id+".png"
     abreviaturas = df_img_team['cod_img'].tolist()
     abreviaturas.append(None)
-    cod_img = triggered_id+".png"
     pos = abreviaturas.index(triggered_id)
     if triggered_id ==  None:
         return html.H4(" ")
     elif triggered_id ==abreviaturas[pos]:
-        container_per_country_c = html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR))
+        container_per_country_c = html.Div(Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR))
         return  container_per_country_c
 """"
     country_flag_name_c = country_flag_name(pais,pais_png,IMAGES_DIR)"""
