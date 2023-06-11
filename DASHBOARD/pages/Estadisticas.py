@@ -6,7 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
-from .Functions import div_countries, country_flag_name
+from .Functions import div_countries, country_flag_name, Lineup_players
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -87,8 +87,6 @@ navbar2 = dbc.Navbar(
                         dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
-                      
-                       
                         
                     ],
                     align="right",
@@ -99,7 +97,6 @@ navbar2 = dbc.Navbar(
             ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
-          
                 id="navbar-collapse1",
                 is_open=False,
                 navbar=True,
@@ -120,12 +117,13 @@ APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
 ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
 DATAS_DIR = os.path.relpath(os.path.join(ASSETS_DIR,'datas'))
 #DATAS_DIR = '../assets/datas'
+PLAYER_DIR  = '../assets/Images'
 IMAGES_DIR = '../assets/Selecciones'
 
 df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=",")
 Id_team = df_img_team['team'].tolist()
 list_list_id_images = [[0,1,2,3,4,5,6,7],[8,9,10,11,12,13,14,15],[16,17,18,19,20,21,22,23],[24,25,26,27,28,29,30,31]]
-list_id_images = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+list_id_images = np.arange(0,32)
 
 countries = dbc.Container([
     div_countries (IMAGES_DIR,Id_team,list_list_id_images)
@@ -175,14 +173,14 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
     #pais = df_img_team[df_img_team['cod_img']==triggered_id]['seleccion']
     if triggered_id !=  None :
         country = df_img_team[df_img_team.cod_img==triggered_id]['seleccion'].values[0]
+        cod_img = triggered_id+".png"
     abreviaturas = df_img_team['cod_img'].tolist()
     abreviaturas.append(None)
-    cod_img = triggered_id+".png"
     pos = abreviaturas.index(triggered_id)
     if triggered_id ==  None:
         return html.H4(" ")
     elif triggered_id ==abreviaturas[pos]:
-        container_per_country_c = html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR))
+        container_per_country_c = html.Div(Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR))
         return  container_per_country_c
 """"
     country_flag_name_c = country_flag_name(pais,pais_png,IMAGES_DIR)"""

@@ -41,13 +41,14 @@ def country_flag_name(pais,cod_img,IMAGES_DIR):
     country_flag_name_c = dbc.Container([
         dbc.Container([
             html.H4(f'{pais.upper()}'),
-            html.Img(src= os.path.join(IMAGES_DIR,cod_img)),
+            html.Img(src= os.path.join(IMAGES_DIR,cod_img),className='images_flag'),
             html.H4('PLANTILLA')
         ],className='div_container_selec')
     ],className='container_selec'),
     return country_flag_name_c
 
-def cartas_jugador(name,cod_img,posicion):
+
+def cartas_jugador(name,cod_img,posicion,folder_img_players,folder_img_seleccion):
     card = html.Div([
     html.Button([
     html.Div(
@@ -59,54 +60,180 @@ def cartas_jugador(name,cod_img,posicion):
     ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
     return card
 
-def Lineup():
-    return None
-def Lineup_players(name,cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR):
-    folder_img_players = f'assets/Images/{country}'
-    folder_img_seleccion = f'assets/Selecciones'
-    players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{country}')
-    def cartas_jugador(name,cod_img,posicion):
-        card = html.Div([
-        html.Button([
-        html.Div(
-            [html.P(posicion)],className='text_pos'
-        ),
-        html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
-        html.Div([html.P(name)],className='text_name'),
-        html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
-        ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
-        return card
+def cartas_jugador_polonia(name,cod_img,posicion,folder_img_players,folder_img_seleccion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
+    html.Div([html.P(name)],className='text_name_po'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
 
-    div_prin = html.Div([
-        html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
-        html.Div([
-            cartas_jugador(players.Jugador[0],cod_img,players.Posición[0]),
-            cartas_jugador(players.Jugador[1],cod_img,players.Posición[1]),
-            cartas_jugador(players.Jugador[2],cod_img,players.Posición[2]),
-            cartas_jugador(players.Jugador[3],cod_img,players.Posición[3]),
-            cartas_jugador(players.Jugador[4],cod_img,players.Posición[4]),
-            cartas_jugador(players.Jugador[5],cod_img,players.Posición[5]),
-            cartas_jugador(players.Jugador[6],cod_img,players.Posición[6]),
-            cartas_jugador(players.Jugador[7],cod_img,players.Posición[7]),
-            cartas_jugador(players.Jugador[8],cod_img,players.Posición[8]),
-            cartas_jugador(players.Jugador[9],cod_img,players.Posición[9]),
-            cartas_jugador(players.Jugador[10],cod_img,players.Posición[10]),
-            cartas_jugador(players.Jugador[11],cod_img,players.Posición[11]),
-            cartas_jugador(players.Jugador[12],cod_img,players.Posición[12]),
-            cartas_jugador(players.Jugador[13],cod_img,players.Posición[13]),
-            cartas_jugador(players.Jugador[14],cod_img,players.Posición[14]),
-            cartas_jugador(players.Jugador[15],cod_img,players.Posición[15]),
-            cartas_jugador(players.Jugador[16],cod_img,players.Posición[16]),
-            cartas_jugador(players.Jugador[17],cod_img,players.Posición[17]),
-            cartas_jugador(players.Jugador[18],cod_img,players.Posición[18]),
-            cartas_jugador(players.Jugador[19],cod_img,players.Posición[19]),
-            cartas_jugador(players.Jugador[20],cod_img,players.Posición[20]),
-            cartas_jugador(players.Jugador[21],cod_img,players.Posición[21]),
-            cartas_jugador(players.Jugador[22],cod_img,players.Posición[22]),
-            cartas_jugador(players.Jugador[23],cod_img,players.Posición[23]),
-            cartas_jugador(players.Jugador[24],cod_img,players.Posición[24]),
-            cartas_jugador(players.Jugador[25],cod_img,players.Posición[25]),
-            cartas_jugador(players.Jugador[26],cod_img,players.Posición[26]),
-            ],className='row container_plantilla')
-    ])
+def cartas_jugador_dominguez(name,cod_img,posicion,folder_img_players,folder_img_seleccion):
+    card = html.Div([
+    html.Button([
+    html.Div(
+        [html.P(posicion)],className='text_pos'
+    ),
+    html.Div([html.Img(src=os.path.join(folder_img_players,name+'.png'),className='img_player')],className=''),
+    html.Div([html.P(name)],className='text_name_do'),
+    html.Div([html.Img(src=os.path.join(folder_img_seleccion,cod_img),className='img_team')],className='')
+    ],className='button col d-flex align-items-md-stretch ')],className='carta_player_button')
+    return card
+
+def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR):
+    folder_img_players = os.path.join(PLAYER_DIR,country)
+    folder_img_seleccion = IMAGES_DIR
+    players = pd.read_csv(os.path.join(DATAS_DIR, "Selecciones_22.csv"),sep=",")
+    players = players[players.PAIS==country].reset_index()
+    
+    if country == "Cameroon":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,3,17,22,25]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+        
+    elif country == 'Costa Rica':
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [3,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country == 'Korea Republic':
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country in ['France','Iran']:
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(25)
+                ],className='row container_plantilla')
+        ])
+
+    elif country=="Polonnd":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [6,13,16,19,22,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country=="Uruguay":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [20]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    elif country=="Serbia":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [0,18]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    elif country =="England":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [9,21]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country=="Switzerland":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [21]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country == "Saudi_Arabia":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,2,22]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    elif country=="Ecuador":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1]
+                else cartas_jugador_dominguez(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+
+    elif country=="Morocco":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [2,24]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    
+    elif country == "Ghana":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    else:
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+        
     return div_prin
