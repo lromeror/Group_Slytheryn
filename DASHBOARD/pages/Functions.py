@@ -94,495 +94,146 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,3,17,22,25]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
-            ])
+        ])
+        
     elif country == 'Costa Rica':
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [3,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
-    elif country == 'Germany':
-        div_prin = html.Div([
-            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
-            html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
-                ],className='row container_plantilla')
-        ])
+
     elif country == 'Korea Republic':
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
-        ],className='row container_plantilla')
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
         ])
+
     elif country in ['France','Iran']:
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-        ],className='row container_plantilla')
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(25)
+                ],className='row container_plantilla')
         ])
+
     elif country=="Polonnd":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [6,13,16,19,22,26]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
+
     elif country=="Uruguay":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [20]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
     elif country=="Serbia":
-        div_prin =  html.Div([
+        div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador_polonia(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [0,18]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
     elif country =="England":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [9,21]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
+
     elif country=="Switzerland":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [21]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
-            ])
-    elif country=="Tunisia":
-        div_prin = html.Div([
-            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
-            html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
-        ],className='row container_plantilla')
         ])
+
     elif country == "Saudi_Arabia":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[27],cod_img,players.Posición[27],folder_img_players,folder_img_seleccion),
-            ],className='row container_plantilla')
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1,2,22]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
         ])
     elif country=="Ecuador":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador_dominguez(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1]
+                else cartas_jugador_dominguez(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
+
     elif country=="Morocco":
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador_polonia(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [2,24]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
+                ],className='row container_plantilla')
+        ])
+    
+    elif country == "Ghana":
+        div_prin = html.Div([
+            html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
+            html.Div([
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                if x not in [1]
+                else cartas_jugador_polonia(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
     else:
         div_prin = html.Div([
             html.Div(country_flag_name(country,triggered_id+".png",IMAGES_DIR)),
             html.Div([
-                cartas_jugador(players.Jugador[0],cod_img,players.Posición[0],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[1],cod_img,players.Posición[1],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[2],cod_img,players.Posición[2],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[3],cod_img,players.Posición[3],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[4],cod_img,players.Posición[4],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[5],cod_img,players.Posición[5],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[6],cod_img,players.Posición[6],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[7],cod_img,players.Posición[7],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[8],cod_img,players.Posición[8],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[9],cod_img,players.Posición[9],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[10],cod_img,players.Posición[10],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[11],cod_img,players.Posición[11],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[12],cod_img,players.Posición[12],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[13],cod_img,players.Posición[13],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[14],cod_img,players.Posición[14],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[15],cod_img,players.Posición[15],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[16],cod_img,players.Posición[16],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[17],cod_img,players.Posición[17],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[18],cod_img,players.Posición[18],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[19],cod_img,players.Posición[19],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[20],cod_img,players.Posición[20],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[21],cod_img,players.Posición[21],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[22],cod_img,players.Posición[22],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[23],cod_img,players.Posición[23],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[24],cod_img,players.Posición[24],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[25],cod_img,players.Posición[25],folder_img_players,folder_img_seleccion),
-                cartas_jugador(players.Jugador[26],cod_img,players.Posición[26],folder_img_players,folder_img_seleccion),
+                cartas_jugador(players.Jugador[x],cod_img,players.Posición[x],folder_img_players,folder_img_seleccion)
+                for x in range(26)
                 ],className='row container_plantilla')
         ])
+        
     return div_prin
