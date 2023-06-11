@@ -133,26 +133,36 @@ folder_confe = 'assets/Confederaciones'
 df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
 
 
-navbarConfederations = dbc.Navbar(
-    dbc.Container(
-        [
-            dbc.Row(
-                [
-                    dbc.Col(html.H3("Confederaciones"), className="navbar-brand mx-auto"),
-                    dbc.Col( html.Img(src=os.path.join(folder_confe,confederation+'.png'),className='img_confederation'),
-            )],
-                className="align-items-center",
-                style={"height": "100%"},
-            ),
-        ],
-        fluid=True,
-    ),
-    color="dark",
-    dark=True,
-)
+
+def imagenes_confe(df):
+    for confederation in df.continente.unique():
+        df_f = df[df.continente==confederation]
+        teams_per_confe = df_f.team.unique() 
+        
+        if confederation == 'UEFA':
+            imagenes = []
+            for img in range(len(teams_per_confe)):
+                imag={
+                    'src': os.path.join(folder_images,teams_per_confe[img]),
+                    'alt': 'Imagen '+str(img),    
+                }
+                imagenes.append(imag)
+                
+            UEFA = dbc.Container([dbc.Row(
+                     [
+                    dbc.Col(
+                     html.Img(src=imagen['src'], alt=imagen['alt'], className="img-fluid"),
+                    sm=6, md=4, lg=3, # Define el tamaño de la columna según el ancho de la pantalla
+                    className="mb-4 ",
+                    )
+                for imagen in imagenes
+                         ],
+                    className="  row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-0 ", # Define el número de columnas en diferentes tamaños de pantalla
+                    )], className="justify-content-center")
+    return UEFA
 
 
-def contruir_seccion_confederation(df):
+"""def contruir_seccion_confederation(df):
     for confederation in df.continente.unique(): #en el data set la columna continente esta la clasificacion por confederación
         df_f = df[df.continente==confederation]
         teams_per_confe = df_f.team.unique()    # codigo de los equipos para las imagenes
@@ -261,13 +271,13 @@ def contruir_seccion_confederation(df):
                                 html.H5(f"{name_teams_per_confe[3].title()}")],className='container_img_name')],href=f"/{name_teams_per_confe[3].title()}"),
                                 ],className='d-flex flex-row flex-wrap w-75')
                     ],className='d-flex justify-content-md-center container_principal_images')
-    return UEFA,AFC,CAF,CONMEBOL,CONCACAF
-UEFA,AFC,CAF,CONMEBOL,CONCACAF = contruir_seccion_confederation(df_img_team)
+    return UEFA,AFC,CAF,CONMEBOL,CONCACAF"""
+UEFA = imagenes_confe(df_img_team)
 
 
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(
-    [navbar1, navbar2,carousel,navbarConfederations,UEFA,AFC,CAF,CONMEBOL,CONCACAF])
+    dbc.Container(
+    [navbar1, navbar2,carousel,UEFA],className="")
 ])
 
