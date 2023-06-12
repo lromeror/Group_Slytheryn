@@ -144,7 +144,7 @@ def grid_country(teams_per_confe,conf,sizePer):
         html.Div([
         html.Img(src=imagen['src'], alt=imagen['alt'], className="grid-item  img-fluid img-thumbnail",style={'width': f'{sizePer}%'})
         for imagen in imagenes
-        ],className=f"grid-container{conf} content")],className="container")
+        ],className=f"grid-container{conf} content1")],className="container1")
     return componente_grid
 
 def imagenes_confe(df):

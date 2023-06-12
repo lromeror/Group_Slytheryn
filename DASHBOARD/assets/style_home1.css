@@ -34,12 +34,12 @@
     align-items: center;
 }
 
-.container {
+.container1 {
     display: flex;
     justify-content: center;
   }
 
-.content {
+.content1 {
     margin-left:  10px;
     margin-right: 10px;
 }
