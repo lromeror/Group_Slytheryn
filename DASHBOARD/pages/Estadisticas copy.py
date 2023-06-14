@@ -189,7 +189,25 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
         return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all
 
- 
+df_ply = pd.read_excel(os.path.join(DATAS_DIR,'Players.xlsx'),sheet_name='player_stats')
+graphics_ = html.Div([
+    html.H4('Restaurant tips by day of week'),
+    dcc.Dropdown(
+        df_ply.
+    ),
+    dcc.Graph(id="graph"),
+])
+
+
+@app.callback(
+    Output("graph", "figure"), 
+    Input("dropdown", "value"))
+def update_bar_chart(day):
+    df = px.data.tips() # replace with your own data source
+    mask = df["day"] == day
+    fig = px.bar(df[mask], x="sex", y="total_bill", 
+                 color="smoker", barmode="group")
+    return fig
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"
 
