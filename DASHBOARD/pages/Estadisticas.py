@@ -109,7 +109,7 @@ navbar2 = dbc.Navbar(
 
 user_country = dbc.Container([
     dbc.Row([
-        html.H2('SELECCIONE UN PAIS ',style={'margin':'1vw  0 1vw  0'}),
+        html.H2('SELECTED COUNTRY ',style={'margin':'1vw  0 1vw  0'}),
     ])
 ])
 PAGES_DIR = os.path.dirname(__file__)

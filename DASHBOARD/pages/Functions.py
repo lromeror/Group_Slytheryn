@@ -42,7 +42,7 @@ def country_flag_name(pais,cod_img,IMAGES_DIR):
         dbc.Container([
             html.H4(f'{pais.upper()}'),
             html.Img(src= os.path.join(IMAGES_DIR,cod_img),className='images_flag'),
-            html.H4('PLANTILLA')
+            html.H4('PLAYERS')
         ],className='div_container_selec')
     ],className='container_selec'),
     return country_flag_name_c
