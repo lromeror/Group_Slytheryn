@@ -132,6 +132,7 @@ countries = dbc.Container([
 stadistics_country = dbc.Container(
     id ='container_country'
 )
+title_ = dbc.Row([html.H2("Stadistics")],className="title_stadistics")
 @callback(
     Output('container_country','children'),
     [Input(f'{Id_team[0].split(".")[0]}','n_clicks')],
@@ -179,11 +180,12 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
     pos = abreviaturas.index(triggered_id)
     if triggered_id ==  None:
         return html.H4(" ")
-    elif triggered_id ==abreviaturas[pos]:
+    elif triggered_id == abreviaturas[pos]:
         container_per_country_c = html.Div(Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR))
-        L=['Goals','Assists','Lineup','Posession']
-        row_cards_info = row_card_info(L,0)
-        return  container_per_country_c,row_cards_info
+        lista=['Games','Goals','Assists','Posession','Avg_age','Yellow Cards','Red Cards','Confederation']
+        row_cards_info = row_card_info(country,lista,0)
+        games_title = dbc.Row([html.H2("Games")],className="title_stadistics")
+        return  container_per_country_c,title_,row_cards_info,games_title
     
 
 layout = html.Div(

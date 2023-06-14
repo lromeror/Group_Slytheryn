@@ -237,27 +237,38 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         ])
         
     return div_prin
-def card_info(name,i):
-    iv_info = dbc.Col(
+def card_info(country,name,i):
+    L=['games','goals','assists','possession','avg_age','cards_yellow','cards_red','confe']
+    df = pd.read_csv("DASHBOARD/assets/datas/data_teamsCup.csv",sep=",")
+    df = df[df['team'] == country]
+    if i==3:
+        df['possession'] = (df['possession'].astype(str))+"%"
+    div_info = dbc.Col(
     html.Div(
         [
             html.H2(f"{name.title()}"),
             html.Hr(className="my-2"),
-            html.P(id="Contenido[i]"
-            ),
+            html.H4(df[L[i]].values[0]),
         ],
-        className="h-100 p-5 text-black bg-light rounded-3",
+        className="h-100 p-5 text-black bg-light rounded-3 margin_div",
     ),
-    md=2,className="text"
+    md=3 ,className="text"
 )
-    return iv_info
-def row_card_info(lista,i):
+    return div_info
+def row_card_info(country,lista,i):
     
-    row_card = dbc.Row([
-        card_info(lista[i],i),
-        card_info(lista[i+1],i+1),
-        card_info(lista[i+2],i+2),
-        card_info(lista[i+3],i+3)
-        
-    ])
+    row_card = dbc.Container([
+    dbc.Row([
+        card_info(country,lista[i],i),
+        card_info(country,lista[i+1],i+1),
+        card_info(country,lista[i+2],i+2),
+        card_info(country,lista[i+3],i+3),  
+    ],className="container_row_card"),
+    dbc.Row([
+        card_info(country,lista[i+4],i+4),
+        card_info(country,lista[i+5],i+5), 
+        card_info(country,lista[i+6],i+6),   
+        card_info(country,lista[i+7],i+7), 
+    ],className="container_row_card")
+])
     return row_card
