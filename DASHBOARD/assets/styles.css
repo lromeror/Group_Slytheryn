@@ -42,3 +42,12 @@
 .Principal{
     background-color: rgb(226, 220, 220);
 }
+.text h2{
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vw;
+}

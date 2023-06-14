@@ -6,7 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
-from .Functions import div_countries, country_flag_name, Lineup_players
+from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -181,9 +181,10 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         return html.H4(" ")
     elif triggered_id ==abreviaturas[pos]:
         container_per_country_c = html.Div(Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR))
-        return  container_per_country_c
+        L=['Goals','Assists','Lineup','Posession']
+        row_cards_info = row_card_info(L,0)
+        return  container_per_country_c,row_cards_info
     
-
 
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"

@@ -237,3 +237,27 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         ])
         
     return div_prin
+def card_info(name,i):
+    iv_info = dbc.Col(
+    html.Div(
+        [
+            html.H2(f"{name.title()}"),
+            html.Hr(className="my-2"),
+            html.P(id="Contenido[i]"
+            ),
+        ],
+        className="h-100 p-5 text-black bg-light rounded-3",
+    ),
+    md=2,className="text"
+)
+    return iv_info
+def row_card_info(lista,i):
+    
+    row_card = dbc.Row([
+        card_info(lista[i],i),
+        card_info(lista[i+1],i+1),
+        card_info(lista[i+2],i+2),
+        card_info(lista[i+3],i+3)
+        
+    ])
+    return row_card
