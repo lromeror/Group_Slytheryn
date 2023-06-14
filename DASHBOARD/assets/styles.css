@@ -63,3 +63,27 @@
 .title_stadistics{
     text-align: center;
 }
+.img_country {
+    width: 10vw;
+    height: 5vw;
+    border-radius: 2vw;
+    
+}
+.match{
+    border-radius: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 2vw;
+}
+.stadicts_country{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

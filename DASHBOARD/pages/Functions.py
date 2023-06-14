@@ -237,9 +237,9 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         ])
         
     return div_prin
-def card_info(country,name,i):
+def card_info(country,name,i,DATAS_DIR):
     L=['games','goals','assists','possession','avg_age','cards_yellow','cards_red','confe']
-    df = pd.read_csv("DASHBOARD/assets/datas/data_teamsCup.csv",sep=",")
+    df = pd.read_csv(os.path.join(DATAS_DIR, "data_teamsCup.csv"),sep=",")
     df = df[df['team'] == country]
     if i==3:
         df['possession'] = (df['possession'].astype(str))+"%"
@@ -255,20 +255,44 @@ def card_info(country,name,i):
     md=3 ,className="text"
 )
     return div_info
-def row_card_info(country,lista,i):
+def row_card_info(country,lista,i,DATAS_DIR ):
     
     row_card = dbc.Container([
     dbc.Row([
-        card_info(country,lista[i],i),
-        card_info(country,lista[i+1],i+1),
-        card_info(country,lista[i+2],i+2),
-        card_info(country,lista[i+3],i+3),  
+        card_info(country,lista[i],i,DATAS_DIR),
+        card_info(country,lista[i+1],i+1,DATAS_DIR),
+        card_info(country,lista[i+2],i+2,DATAS_DIR),
+        card_info(country,lista[i+3],i+3,DATAS_DIR),  
     ],className="container_row_card"),
     dbc.Row([
-        card_info(country,lista[i+4],i+4),
-        card_info(country,lista[i+5],i+5), 
-        card_info(country,lista[i+6],i+6),   
-        card_info(country,lista[i+7],i+7), 
+        card_info(country,lista[i+4],i+4,DATAS_DIR),
+        card_info(country,lista[i+5],i+5,DATAS_DIR), 
+        card_info(country,lista[i+6],i+6,DATAS_DIR),   
+        card_info(country,lista[i+7],i+7,DATAS_DIR), 
     ],className="container_row_card")
 ])
     return row_card
+def row_matches(DATAS_DIR,IMAGES_DIR,Id_team,goles_1,goles_2):
+    selecciones = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=",")
+    cod_img1 = (selecciones[selecciones.seleccion==Id_team[0]].reset_index()['cod_img'][0])+".png"
+    cod_img2 = (selecciones[selecciones.seleccion==Id_team[1]].reset_index()['cod_img'][0])+".png"
+    row_match = dbc.Row([
+        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img1),className='img-fluid img-thumbnail img_country')],md=4),
+        dbc.Col(html.H3(f"{goles_1}           vs             {goles_2}"),md=4,className="result"),
+        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img2),className='img-fluid img-thumbnail img_country')],md=4),
+    ],className="bg-light match")
+    return row_match
+
+def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
+    df = pd.read_csv(os.path.join(DATAS_DIR,'Matches.csv'),sep=",")
+    df.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
+    df = df[(df['1'] == country) | (df['2'] == country)]
+    df = df[['1','2','1_goals','2_goals']]
+    df = df.reset_index(drop=True)
+    
+    created_row_matches_ = dbc.Container([
+        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][i],df['2'][i]],df['1_goals'].tolist()[i],df['2_goals'].tolist()[i])
+        for i in range(len(df))
+        ])
+    print(created_row_matches)
+    return created_row_matches_

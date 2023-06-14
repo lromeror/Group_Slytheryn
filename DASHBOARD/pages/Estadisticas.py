@@ -6,7 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
-from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info
+from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info,created_row_matches,row_matches
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -130,7 +130,7 @@ countries = dbc.Container([
     ])
 
 stadistics_country = dbc.Container(
-    id ='container_country'
+    id ='container_country',className="stadicts_country"
 )
 title_ = dbc.Row([html.H2("Stadistics")],className="title_stadistics")
 @callback(
@@ -183,10 +183,11 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
     elif triggered_id == abreviaturas[pos]:
         container_per_country_c = html.Div(Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR))
         lista=['Games','Goals','Assists','Posession','Avg_age','Yellow Cards','Red Cards','Confederation']
-        row_cards_info = row_card_info(country,lista,0)
+        row_cards_info = row_card_info(country,lista,0,DATAS_DIR)
         games_title = dbc.Row([html.H2("Games")],className="title_stadistics")
-        return  container_per_country_c,title_,row_cards_info,games_title
-    
+        row_matches_all = created_row_matches("Argetina",DATAS_DIR,IMAGES_DIR)
+        x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
+        return  container_per_country_c,title_,row_cards_info,games_title,x
 
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"
