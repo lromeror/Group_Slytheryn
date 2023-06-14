@@ -287,8 +287,10 @@ def row_matches(DATAS_DIR,IMAGES_DIR,Id_team,goles_1,goles_2):
 
 def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
     df = pd.read_csv(os.path.join(DATAS_DIR,'Matches.csv'),sep=",")
-    df.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
     df = df[(df['1'] == country) | (df['2'] == country)]
+    df  = df.rename(columns={'1_goals':'goals1','2_goals':'goals2'})
+    df['1_goals'] = [x.split(',')[0] for x in df.score]
+    df['2_goals'] = [x.split(',')[1] for x in df.score]
     df = df[['1','2','1_goals','2_goals']]
     df = df.reset_index(drop=True)
     created_row_matches_4 =dbc.Container([])
