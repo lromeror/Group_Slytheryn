@@ -240,7 +240,9 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
 def card_info(country,name,i,DATAS_DIR):
     L=['games','goals','assists','possession','avg_age','cards_yellow','cards_red','confe']
     df = pd.read_csv(os.path.join(DATAS_DIR, "data_teamsCup.csv"),sep=",")
+    selecciones = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=",")
     df = df[df['team'] == country]
+    df['confe'] = [selecciones[selecciones.seleccion==team]['continente'] for team in df.team]
     if i==3:
         df['possession'] = (df['possession'].astype(str))+"%"
     div_info = dbc.Col(
@@ -289,9 +291,35 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
     df = df[(df['1'] == country) | (df['2'] == country)]
     df = df[['1','2','1_goals','2_goals']]
     df = df.reset_index(drop=True)
-    
+    created_row_matches_4 =dbc.Container([])
+    created_row_matches_3 = created_row_matches_4
+    created_row_matches_5=created_row_matches_4
+    created_row_matches_6=created_row_matches_4
+    title = html.H3("GROUP STAGE")
     created_row_matches_ = dbc.Container([
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][i],df['2'][i]],df['1_goals'].tolist()[i],df['2_goals'].tolist()[i])
-        for i in range(len(df))
+        for i in range(3)
         ])
-    return created_row_matches_
+    if len(df)>3:
+        created_row_matches_3 = dbc.Container([
+        dbc.Row([html.H3("Round of 16".title())],className='Container_principal'),
+        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][3],df['2'][3]],df['1_goals'].tolist()[3],df['2_goals'].tolist()[3])
+        ])
+    if len(df)>4:
+        created_row_matches_4 = dbc.Container([
+        dbc.Row([html.H3("Quarter final".title())],className='Container_principal'),
+        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][4],df['2'][4]],df['1_goals'].tolist()[4],df['2_goals'].tolist()[4])
+        ])
+    if len(df)>5:
+        created_row_matches_5 = dbc.Container([
+        dbc.Row([html.H3("Semi-final".title())],className='Container_principal'),
+        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][5],df['2'][5]],df['1_goals'].tolist()[5],df['2_goals'].tolist()[5])
+        ])
+    if len(df)>6:
+        created_row_matches_6 = dbc.Container([
+        dbc.Row([html.H3("Final".title())],className='Container_principal'),
+        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
+        ])
+    final = dbc.Container([title,created_row_matches_,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
+    return final
+
