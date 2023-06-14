@@ -277,9 +277,9 @@ def row_matches(DATAS_DIR,IMAGES_DIR,Id_team,goles_1,goles_2):
     cod_img1 = (selecciones[selecciones.seleccion==Id_team[0]].reset_index()['cod_img'][0])+".png"
     cod_img2 = (selecciones[selecciones.seleccion==Id_team[1]].reset_index()['cod_img'][0])+".png"
     row_match = dbc.Row([
-        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img1),className='img-fluid img-thumbnail img_country')],md=4),
-        dbc.Col(html.H3(f"{goles_1}           vs             {goles_2}"),md=4,className="result"),
-        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img2),className='img-fluid img-thumbnail img_country')],md=4),
+        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img1),className='img-fluid img-thumbnail img_country')],className="component"),
+        dbc.Col(html.H3(f"{goles_1}           vs             {goles_2}"),className="result component"),
+        dbc.Col([html.Img(src=os.path.join(IMAGES_DIR,cod_img2),className='img-fluid img-thumbnail img_country')],className="component"),
     ],className="bg-light match")
     return row_match
 
@@ -294,5 +294,4 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][i],df['2'][i]],df['1_goals'].tolist()[i],df['2_goals'].tolist()[i])
         for i in range(len(df))
         ])
-    print(created_row_matches)
     return created_row_matches_

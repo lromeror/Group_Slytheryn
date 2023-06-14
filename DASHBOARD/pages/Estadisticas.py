@@ -185,9 +185,9 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         lista=['Games','Goals','Assists','Posession','Avg_age','Yellow Cards','Red Cards','Confederation']
         row_cards_info = row_card_info(country,lista,0,DATAS_DIR)
         games_title = dbc.Row([html.H2("Games")],className="title_stadistics")
-        row_matches_all = created_row_matches("Argetina",DATAS_DIR,IMAGES_DIR)
-        x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
-        return  container_per_country_c,title_,row_cards_info,games_title,x
+        row_matches_all = created_row_matches(country,DATAS_DIR,IMAGES_DIR)
+        #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
+        return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all
 
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"

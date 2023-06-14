@@ -64,16 +64,20 @@
     text-align: center;
 }
 .img_country {
-    width: 10vw;
+    width: 5vw;
     height: 5vw;
     border-radius: 2vw;
     
+}
+.img_country img{
+    width: 100%;
+    height: 100%;
 }
 .match{
     border-radius: 2vw;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     margin: 2vw;
 }
 .stadicts_country{
@@ -82,7 +86,16 @@
     align-items: center;
     flex-direction: column;
 }
+.stadicts_country h4{
+    margin-bottom: 2vw;
+}
 .result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.component{
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
