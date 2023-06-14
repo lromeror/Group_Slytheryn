@@ -6,7 +6,6 @@ import os
 import pandas as pd
 
 
-nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 FIFA_LOGO = "https://cdn.cookielaw.org/logos/a22264f8-9d14-4ab8-ab4b-a61925d0e901/6b589592-a31b-4ede-9440-c6368b1eb13b/d0426540-ceee-4ccb-b321-ac2656d493bb/fcm_rgbf_s.png"
 
@@ -132,15 +131,16 @@ df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
 def grid_country(teams_per_confe,conf,sizePer):
     imagenes = []
     for img in range(len(teams_per_confe)):
-        imag={
+        """imag={
             'src': os.path.join(folder_images,teams_per_confe[img]),
             'alt': 'Imagen '+str(img),    
             }
-        imagenes.append(imag)
+        imagenes.append(imag)"""
 
-        
+        print(img)
+
+"""        
     componente_grid= html.Div([
-        html.Div([html.H1("Pilas")]),
         html.Div([
         html.Img(src=imagen['src'], alt=imagen['alt'], className="grid-item  img-fluid img-thumbnail",style={'width': f'{sizePer}%'})
         for imagen in imagenes
@@ -164,12 +164,13 @@ def imagenes_confe(df):
             CONCACAF = grid_country(teams_per_confe,5,33)
     return UEFA,AFC,CAF,CONMEBOL,CONCACAF
 
-UEFA,AFC,CAF,CONMEBOL,CONCACAF= imagenes_confe(df_img_team)
+UEFA,AFC,CAF,CONMEBOL,CONCACAF= imagenes_confe(df_img_team)"""
 
 
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    dbc.Container(
-    [navbar1, navbar2,carousel,UEFA,AFC,CAF,CONMEBOL,CONCACAF],className="justify-content-center g-0",fluid=True)
+     html.Div(
+    [navbar1, navbar2,carousel])
+    #""",UEFA,AFC,CAF,CONMEBOL,CONCACAF"""
 ])
-
+#como hacer una grid
