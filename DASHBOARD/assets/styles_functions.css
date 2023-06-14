@@ -1,3 +1,34 @@
 .btn_back{
     background: none;
 }
+.content_{
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #e9cc74;
+    margin-top: 1vw;
+    float: left;
+    background-color: aquamarine;
+}
+.title_div{
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #e9cc74;
+    margin-top: 1vw;
+    float: left;
+    background-color: aquamarine;
+    width: 25vw;
+    height: 5vw;
+    border-radius: 2vw;
+}
+.div_container_info{
+    margin-top: 1vw;
+    float: left;
+    background-color: rgb(127, 148, 255);
+    width: 25vw;
+    height: 25vw;
+    border-radius: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
