@@ -139,34 +139,56 @@ def imagenes_confe(df):
                     html.Div(
                         [
                             dbc.Row(
-                                dbc.Col(
-                                    [
-                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
-                                        html.Br(),html.Br(),
-                                        html.H4("Confederacion Sudamericana"),
-                                    ],
-                                    className="text-center"
-                                )
-                            ),
-                            dbc.Row(
-                                [
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[6]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[7]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[8]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[9]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[10]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[11]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[12]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0")
-                                 
-                                ],
-                                className="mt-4 no-gutters justify-content-center",
-                            ),
+            [
+                dbc.Col(
+                    [
+                        html.Img(src=os.path.join(folder_confe,confederation+".png"), style={"width": "200px", "height": "150px",'border-radius': '5px'}),
+                        html.Br(),
+                        html.H3("Union of European Football Associations"),
+                    ],
+                    width=4
+                ),
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")]
+                        ),dbc.Row(
+            [
+                dbc.Col(html.Div(style={'height': '10px'}))
+            ]
+        ),
+                        dbc.Row(
+                            [
+                                
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[6]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[7]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[8]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[9]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[10]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[11]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    ]
+                        ),
+                        dbc.Row(
+            [
+                dbc.Col(html.Div(style={'height': '10px'}))
+            ]
+        ),dbc.Row(
+                            [
+                                dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[12]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    ]
+                        )
+        
+                    ],
+                    width=8
+                ),
+            ]
+        )
                         ],
                         className="my-4",
                         style={"text-align": "center"},
@@ -186,9 +208,9 @@ def imagenes_confe(df):
                             dbc.Row(
                                 dbc.Col(
                                     [
-                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px",'border-radius': '5px'}),
                                         html.Br(),html.Br(),
-                                        html.H4("Confederacion Sudamericana"),
+                                        html.H4("Asian Football Confederation"),
                                     ],
                                     className="text-center"
                                 )
@@ -203,7 +225,7 @@ def imagenes_confe(df):
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
                                  
                                 ],
-                                className="mt-4 no-gutters justify-content-center",
+                                className="mt-4 no-gutters justify-content-center  g-0",
                             ),
                         ],
                         className="my-4",
@@ -224,19 +246,21 @@ def imagenes_confe(df):
                             dbc.Row(
                                 dbc.Col(
                                     [
-                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px",'border-radius': '5px'}),
                                         html.Br(),html.Br(),
-                                        html.H4("Confederacion Sudamericana"),
+                                        html.H4("The organization for football in South America"),html.Br(),
                                     ],
                                     className="text-center"
                                 )
                             ),
                             dbc.Row(
-                                [
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0")
+                                [   
+                                    
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    
                                  
                                 ],
                                 className="mt-4 no-gutters justify-content-center",
@@ -247,7 +271,7 @@ def imagenes_confe(df):
                     ),
                 ],
                 fluid=True,
-                className="container mt-4",
+                className="container mt-4 m-0",
                 style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
             ),
         )
@@ -260,9 +284,9 @@ def imagenes_confe(df):
                             dbc.Row(
                                 dbc.Col(
                                     [
-                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px",'border-radius': '5px'}),
                                         html.Br(),html.Br(),
-                                        html.H4("Confederacion Sudamericana"),
+                                        html.H4("Confederation of African Football"),
                                     ],
                                     className="text-center"
                                 )
@@ -297,20 +321,21 @@ def imagenes_confe(df):
                             dbc.Row(
                                 dbc.Col(
                                     [
-                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px",'border-radius': '5px'}),
                                         html.Br(),html.Br(),
-                                        html.H4("Confederacion Sudamericana"),
+                                        html.H4("The Confederation of North, Central America and Caribbean Association Football"),
                                     ],
                                     className="text-center"
                                 )
                             ),
                             dbc.Row(
                                 [
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
-                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
-                                 
+                                   
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "85px", "height": "60px"}), width=2, className="text-center p-0"),
+                                   
                                 ],
                                 className="mt-4 no-gutters justify-content-center",
                             ),
@@ -329,10 +354,71 @@ def imagenes_confe(df):
 
 UEFA,CONMEBOL,CONCACAF,AFC,CAF=imagenes_confe(df_img_team)
 
+confe2=html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                          dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        AFC
+                    ],
+                    width=6
+                ),
+                dbc.Col(
+                    [CAF],
+                    width=6
+                ),
+            ]
+        ),],
+            className="my-4",
+            style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
+
+confe3=html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                          dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        CONMEBOL
+                    ],
+                    width=6
+                ),
+                dbc.Col(
+                    [CONCACAF],
+                    width=6
+                ),
+            ]
+        ),],
+            className="my-4",
+            style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
+
+
+
+
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
      html.Div(
-    [navbar1, navbar2,carousel,UEFA,CONMEBOL,CONCACAF,AFC,CAF])
+    [navbar1, navbar2,carousel,UEFA,confe3,confe2])
   
 ])
 
