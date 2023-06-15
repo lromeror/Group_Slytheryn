@@ -3,6 +3,7 @@ from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html
 import os
+import plotly.express as px
 import pandas as pd
 
 
@@ -74,7 +75,7 @@ navbar2 = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
-                        dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
+                       
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
@@ -418,7 +419,33 @@ title=dbc.Container([
     ])
 ])
 
+title2=title=dbc.Container([
+    dbc.Row([
+        html.H2('statistics by confederations'.upper(),style={'margin':'1vw  0 1vw  0',"text-align":"center"}),
+    ])
+])
 
+#DATASET
+df_gra= pd.read_csv('DASHBOARD/assets/datas/dataConfe.csv',sep=',')
+grafica1= html.Div([
+    html.H4('Restaurant tips by day of week'),
+    dcc.Dropdown(
+        id="dropdown20",
+        options=["Fri", "Sat", "Sun"],
+        value="Fri",
+        clearable=False,
+    ),
+    dcc.Graph(id="graph50"),
+])
+@callback(
+    Output("graph50", "figure"), 
+    Input("dropdown20", "value"))
+def update_bar_chart(day):
+    df = px.data.tips() # replace with your own data source
+    mask = df["day"] == day
+    fig = px.bar(df[mask], x="sex", y="total_bill", 
+                 color="smoker", barmode="group")
+    return fig
 
 grafiProm=html.Div(
             dbc.Container(
@@ -428,9 +455,9 @@ grafiProm=html.Div(
                           dbc.Row(
             [
                 dbc.Col(
-                    [
-                        
-                    ],
+                    
+                        grafica1,
+
                     width=6
                 ),
                 dbc.Col(
@@ -456,7 +483,7 @@ grafiProm=html.Div(
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
      html.Div(
-    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2],style={"background-color": "rgb(235, 231, 231)"})
+    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm],style={"background-color": "rgb(235, 231, 231)"})
   
 ])
 
