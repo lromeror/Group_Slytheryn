@@ -120,7 +120,7 @@ carousel = dbc.Carousel(
          "src": os.path.join(folder_images,"foto1.png")
          },
         {"key": "2", "src": os.path.join(folder_images,"foto2.png")},
-        {"key": "3", "src": "https://cdn.mos.cms.futurecdn.net/Uy2oLCTFTGAFbUp5mg2Q3H.jpg"},
+        {"key": "3", "src": os.path.join(folder_images,"foto3.png")},
     ],
     controls=True,
     indicators=True,
@@ -431,7 +431,7 @@ grafica1=html.Div([
     html.H4('Average'),
     dcc.Dropdown(
         id="dropdown",
-        options=df_gra.columns.to_list()[1:],
+        options=df_gra.columns.to_list()[1:-1],
         value=df_gra.columns.to_list()[1],
       
     ),
@@ -455,7 +455,7 @@ def graficaLine(label):
 
 
 
-fig50 = px.bar(df_gra, x="CONFEDERATIONS", y="PERCENT",title="Long-Form Input")
+fig50 = px.bar(df_gra, x="CONFEDERATIONS", y="PERCENT")
 
 
 grafiProm=html.Div(
