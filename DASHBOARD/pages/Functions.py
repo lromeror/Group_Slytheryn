@@ -334,32 +334,32 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
     final = dbc.Container([title,created_row_matches_,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
     return final
 
-def createTop5(DATAS_DIR,country):
-    dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
-    print(dff)
-    df_goleadores = dff[dff.team==country].sort_values(["goals"],ascending=False)
-    df_goleadores = df_goleadores[["player","goals","games"]][0:5]
-    title_top = html.H3("Top 5 goal scorers")
-    table =dash_table.DataTable(
-                            id='table_materias',
-                            columns=[{'name':col, 'id':col}for col in df_goleadores.columns],
-                            data=df_goleadores.to_dict('records'),  # the contents of the table
-                            cell_selectable=True,  # para que no se me presente el hover
-                            fill_width=False,
-                            sort_action='native',
-                            style_as_list_view=True,
-                            style_header={
-                                'backgroundColor': '#edf3f4',
-                                'fontWeight': 'bold',
-                                'textAlign': 'center'
-                            },
-                            style_cell={
-                                'backgroundColor': '#edf3f4',
-                                'textAlign': 'center',
-                                'padding': '5px',
-                                'textAlign': 'center'
-                            },
-                            style_data={'borderBottom': '1px solid #167ac6',
-                                        'fontFamily': 'Quicksand'})
-    final = dbc.Container([title_top,table])
-    return final
+#def createTop5(DATAS_DIR,country):
+#    dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
+#    print(dff)
+#    df_goleadores = dff[dff.team==country].sort_values(["goals"],ascending=False)
+#    df_goleadores = df_goleadores[["player","goals","games"]][0:5]
+#    title_top = html.H3("Top 5 goal scorers")
+#    table =dash_table.DataTable(
+#                            id='table_materias',
+#                            columns=[{'name':col, 'id':col}for col in df_goleadores.columns],
+#                            data=df_goleadores.to_dict('records'),  # the contents of the table
+#                            cell_selectable=True,  # para que no se me presente el hover
+#                            fill_width=False,
+#                            sort_action='native',
+#                            style_as_list_view=True,
+#                            style_header={
+#                                'backgroundColor': '#edf3f4',
+#                                'fontWeight': 'bold',
+#                                'textAlign': 'center'
+#                            },
+#                            style_cell={
+#                                'backgroundColor': '#edf3f4',
+#                                'textAlign': 'center',
+#                                'padding': '5px',
+#                                'textAlign': 'center'
+#                            },
+#                            style_data={'borderBottom': '1px solid #167ac6',
+#                                        'fontFamily': 'Quicksand'})
+#    final = dbc.Container([title_top,table])
+#    return final
