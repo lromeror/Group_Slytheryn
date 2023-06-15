@@ -3,6 +3,7 @@ from dash import Dash, html,dash_table
 import os
 import pandas as pd
 import numpy as np
+import plotly.express as px
 
 
 def country_flag(IMAGES_DIR,Id_team):
@@ -238,6 +239,7 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         ])
         
     return div_prin
+
 def card_info(country,name,i,DATAS_DIR):
     L=['games','goals','assists','possession','avg_age','cards_yellow','cards_red','confe']
     df = pd.read_csv(os.path.join(DATAS_DIR, "data_teamsCup.csv"),sep=",")
@@ -298,14 +300,49 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
     created_row_matches_3 = created_row_matches_4
     created_row_matches_5=created_row_matches_4
     created_row_matches_6=created_row_matches_4
+    df_1 = pd.read_csv(os.path.join(DATAS_DIR,'group_stats.csv'),sep=",")
+    df3 = df_1[['group','team','matches_played','wins','draws','losses','goals_scored','goals_against','goal_difference','points']]
+    df3.columns =['group','Team','PJ','G','E','L','GF','GC','DG','PTS']
+    group_id = df3.loc[df3.Team==country]['group'].values[0]
+    table = df3[df3['group']==group_id]
+    table.drop("group",axis=1,inplace=True)
     title = html.H3("GROUP STAGE")
     created_row_matches_ = dbc.Container([
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][i],df['2'][i]],df['1_goals'].tolist()[i],df['2_goals'].tolist()[i])
         for i in range(3)
         ])
+    tables1= dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in table.columns],
+                            data=table.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'},
+                            style_data_conditional = [
+                                {
+                                    'if': {
+                                        'filter_query': '{{Team}} = {}'.format(country),
+                                        },
+                                    'backgroundColor': '#4a98d0',
+                                    'fontWeight': 'bold'
+                                }])            
     if len(df)>3:
         created_row_matches_3 = dbc.Container([
-        dbc.Row([html.H3("Round of 16".title())],className='Container_principal'),
+        dbc.Row([html.H3("Round of 16".title())],className='Container_principal margin2'),
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][3],df['2'][3]],df['1_goals'].tolist()[3],df['2_goals'].tolist()[3])
         ])
     if len(df)>4:
@@ -330,15 +367,16 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
             dbc.Row([html.H3("Play-off for third place".title())],className='Container_principal'),
             row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
             ])
-    final = dbc.Container([title,created_row_matches_,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
+    final = dbc.Container([title,created_row_matches_,tables1,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
     return final
 
 def createTop5(DATAS_DIR,country):
     dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
-    print(dff)
-    df_goleadores = dff[dff.team==country].sort_values(["goals"],ascending=False)
-    df_goleadores = df_goleadores[["player","goals","games"]][0:5]
-    title_top = html.H3("Top 5 goal scorers")
+    df = dff[dff.team==country].sort_values(["goals"],ascending=False)
+    df_asistidores = df[["player","assists","games"]][0:5]
+    df_goleadores = df[["player","goals","games"]][0:5]
+    title_top = dbc.Row([html.H5("Top 5 goal scorers".title())],className='title_Table')
+    title_assis = dbc.Row([html.H5("Top 5 soccer assistants".title())],className='title_Table')
     table =dash_table.DataTable(
                             id='table_materias',
                             columns=[{'name':col, 'id':col}for col in df_goleadores.columns],
@@ -360,5 +398,45 @@ def createTop5(DATAS_DIR,country):
                             },
                             style_data={'borderBottom': '1px solid #167ac6',
                                         'fontFamily': 'Quicksand'})
-    final = dbc.Container([title_top,table])
+    table2 =dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in df_asistidores.columns],
+                            data=df_asistidores.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'})
+    final = dbc.Container([
+        dbc.Col([title_top,table],className="margin3"),
+        dbc.Col([title_assis,table2],className="margin3")],className="container_tables")
     return final
+
+def top5player_goals (df,country):
+    df_country = df[df.team==country]
+    df_sorted = df_country.sort_values(by="goals", ascending=False).iloc[:5]
+
+    fig_goals = px.bar(df_sorted, x='player', y=['goals_pens', 'pens_made'],
+                barmode='stack', template='simple_white')
+
+    fig_goals.update_layout(
+        title='Top 5 players with most goals',
+        xaxis_title='Players',
+        yaxis_title='Goals'
+    )
+
+    return fig_goals
+
+

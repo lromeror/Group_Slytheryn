@@ -108,3 +108,29 @@
     flex-direction: column;
     text-align: center;
 }
+.margin2{
+    margin-top: 2vw;
+}
+.container_tables{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.title_Table{
+    text-align: center;
+    font-size: 1vw;
+}
+.margin3{
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.margin4{
+    margin-bottom: 2vw;
+    border-radius: 2vw;
+}
