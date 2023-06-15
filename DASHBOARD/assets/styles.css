@@ -40,7 +40,7 @@
     margin: 1vw 5vw 1vw 5vw;
 }
 .Principal{
-    background-color: rgb(226, 220, 220);
+    background-color: rgb(235, 231, 231);
 }
 .text h2{
     font-size: 2vw;
@@ -107,4 +107,26 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
+}
+.margin2{
+    margin-top: 2vw;
+}
+.container_tables{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.title_Table{
+    text-align: center;
+    font-size: 1vw;
+}
+.margin3{
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
 }

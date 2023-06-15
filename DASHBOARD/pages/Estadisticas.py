@@ -6,7 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
-from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info,created_row_matches,row_matches
+from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info,created_row_matches,row_matches,createTop5
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -42,28 +42,6 @@ navbar = dbc.Navbar(
                 href="http://127.0.0.1:8050/",
                 style={"textDecoration": "none"},
             ),
-            dcc.Link(
-                dbc.Row(
-                    [
-                        html.P('CONFEDERATIONS'),
-                    ],
-                    align="center",
-                    className="g-0", 
-                ),
-                href="/Confederations",
-                style={"textDecoration": "none"},
-            ),
-            dcc.Link(
-                dbc.Row(
-                    [
-                        html.P('ESTADISTICS'),
-                    ],
-                    align="center",
-                    className="g-0", 
-                ),
-                href="/Estadisticas",
-                style={"textDecoration": "none"},
-            ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 search_bar,
@@ -83,7 +61,7 @@ navbar2 = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Home",href= "http://127.0.0.1:8050/",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
@@ -95,7 +73,7 @@ navbar2 = dbc.Navbar(
                 #href="https://plotly.com",
                 #style={"textDecoration": "none"},
             ),
-            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+            dbc.NavbarToggler(id="navbar-toggler", n_clicks=50),
             dbc.Collapse(
                 id="navbar-collapse1",
                 is_open=False,
@@ -133,6 +111,8 @@ stadistics_country = dbc.Container(
     id ='container_country',className="stadicts_country"
 )
 title_ = dbc.Row([html.H2("Stadistics".upper())],className="title_stadistics")
+
+
 @callback(
     Output('container_country','children'),
     [Input(f'{Id_team[0].split(".")[0]}','n_clicks')],
@@ -186,8 +166,11 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         row_cards_info = row_card_info(country,lista,0,DATAS_DIR)
         games_title = dbc.Row([html.H2("GAMES")],className="title_stadistics")
         row_matches_all = created_row_matches(country,DATAS_DIR,IMAGES_DIR)
+        div_goals = dbc.Container([
+            dbc.Row(html.H4("GOALS and ASSISTS")),
+            dbc.Row([createTop5(DATAS_DIR,country)])],className="Container_principal")
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
-        return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all
+        return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all,div_goals
 
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"
