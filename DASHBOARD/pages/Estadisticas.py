@@ -42,28 +42,6 @@ navbar = dbc.Navbar(
                 href="http://127.0.0.1:8050/",
                 style={"textDecoration": "none"},
             ),
-            dcc.Link(
-                dbc.Row(
-                    [
-                        html.P('CONFEDERATIONS'),
-                    ],
-                    align="center",
-                    className="g-0", 
-                ),
-                href="/Confederations",
-                style={"textDecoration": "none"},
-            ),
-            dcc.Link(
-                dbc.Row(
-                    [
-                        html.P('ESTADISTICS'),
-                    ],
-                    align="center",
-                    className="g-0", 
-                ),
-                href="/Estadisticas",
-                style={"textDecoration": "none"},
-            ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 search_bar,
@@ -83,7 +61,7 @@ navbar2 = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Home",href= "http://127.0.0.1:8050/",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
@@ -95,7 +73,7 @@ navbar2 = dbc.Navbar(
                 #href="https://plotly.com",
                 #style={"textDecoration": "none"},
             ),
-            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+            dbc.NavbarToggler(id="navbar-toggler", n_clicks=50),
             dbc.Collapse(
                 id="navbar-collapse1",
                 is_open=False,
