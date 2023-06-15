@@ -167,7 +167,7 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         games_title = dbc.Row([html.H2("GAMES")],className="title_stadistics")
         row_matches_all = created_row_matches(country,DATAS_DIR,IMAGES_DIR)
         div_goals = dbc.Container([
-            dbc.Row(html.H4("GOALS")),
+            dbc.Row(html.H4("GOALS and ASSISTS")),
             dbc.Row([createTop5(DATAS_DIR,country)])],className="Container_principal")
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
         return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all,div_goals
