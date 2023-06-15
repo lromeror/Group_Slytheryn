@@ -318,12 +318,18 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
         dbc.Row([html.H3("Semi-final".title())],className='Container_principal'),
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][5],df['2'][5]],df['1_goals'].tolist()[5],df['2_goals'].tolist()[5])
         ])
-    """if len(df)>6:
-        if country in ['']
-        created_row_matches_6 = dbc.Container([
-        dbc.Row([html.H3("Final".title())],className='Container_principal'),
-        row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
-        ])"""
+    if len(df)>6:
+        if country not in ['Croatia','Morocco']:
+
+            created_row_matches_6 = dbc.Container([
+            dbc.Row([html.H3("Final".title())],className='Container_principal'),
+            row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
+            ])
+        else:
+            created_row_matches_6 = dbc.Container([
+            dbc.Row([html.H3("Play-off for third place".title())],className='Container_principal'),
+            row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
+            ])
     final = dbc.Container([title,created_row_matches_,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
     return final
 
