@@ -189,9 +189,8 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
         return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all
 
- 
 layout = html.Div(
-    [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"
+    [navbar,navbar2,user_country,countries,stadistics_country, graphics],className="Principal"
 
 )
 
