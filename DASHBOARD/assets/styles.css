@@ -39,3 +39,72 @@
     border-radius: 1vw;
     margin: 1vw 5vw 1vw 5vw;
 }
+.Principal{
+    background-color: rgb(226, 220, 220);
+}
+.text h2{
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vw;
+}
+.margin_div H4{
+    margin-bottom: 2vw;
+    text-align: center;
+
+}
+.container_row_card{
+    margin: 2vw;
+
+}
+.title_stadistics{
+    text-align: center;
+}
+.img_country {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 2vw;
+    
+}
+.img_country img{
+    width: 100%;
+    height: 100%;
+}
+.match{
+    border-radius: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vw;
+}
+.stadicts_country{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.stadicts_country h4{
+    margin-bottom: 2vw;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.component{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container_principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
