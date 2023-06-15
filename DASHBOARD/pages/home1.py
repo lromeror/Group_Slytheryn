@@ -108,12 +108,17 @@ def toggle_navbar_collapse(n, is_open):
         return not is_open
     return is_open
 
+
+folder_images = 'assets/Selecciones'
+folder_confe = 'assets/Confederaciones'
+df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
+
 carousel = dbc.Carousel(
     items=[
         {"key": "1", 
-         "src": "https://images2.minutemediacdn.com/image/upload/c_crop,w_4020,h_2261,x_0,y_110/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/12up_es_international_web/01gmk9xqdff9tjvhar8g.jpg"
+         "src": os.path.join(folder_images,"foto1.png")
          },
-        {"key": "2", "src": "https://resizer.iproimg.com/unsafe/880x/filters:format(webp)/https://assets.iproup.com/assets/jpg/2023/03/34125.jpg"},
+        {"key": "2", "src": os.path.join(folder_images,"foto2.png")},
         {"key": "3", "src": "https://cdn.mos.cms.futurecdn.net/Uy2oLCTFTGAFbUp5mg2Q3H.jpg"},
     ],
     controls=True,
@@ -122,11 +127,6 @@ carousel = dbc.Carousel(
     ride="carousel",
     className='img-fluid'
 )
-
-folder_images = 'assets/Selecciones'
-folder_confe = 'assets/Confederaciones'
-df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
-
 
 def imagenes_confe(df):
     for confederation in df.continente.unique():
@@ -412,13 +412,51 @@ confe3=html.Div(
             ),
         )
 
+title=dbc.Container([
+    dbc.Row([
+        html.H2('Football confederations of the world'.upper(),style={'margin':'1vw  0 1vw  0',"text-align":"center"}),
+    ])
+])
+
+
+
+grafiProm=html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                          dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        
+                    ],
+                    width=6
+                ),
+                dbc.Col(
+                    [
+
+                    ],
+                    width=6
+                ),
+            ]
+        ),],
+            className="my-4",
+            style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
 
 
 
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
      html.Div(
-    [navbar1, navbar2,carousel,UEFA,confe3,confe2])
+    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2],style={"background-color": "rgb(235, 231, 231)"})
   
 ])
 
