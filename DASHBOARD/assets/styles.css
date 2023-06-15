@@ -130,3 +130,7 @@
     text-align: center;
     flex-direction: column;
 }
+.margin4{
+    margin-bottom: 2vw;
+    border-radius: 2vw;
+}

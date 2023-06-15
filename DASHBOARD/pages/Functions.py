@@ -3,7 +3,7 @@ from dash import Dash, html,dash_table
 import os
 import pandas as pd
 import numpy as np
-import plotly.graph_objects as go
+import plotly.express as px
 
 
 def country_flag(IMAGES_DIR,Id_team):
@@ -239,6 +239,7 @@ def Lineup_players(cod_img,country,DATAS_DIR,triggered_id,IMAGES_DIR,PLAYER_DIR)
         ])
         
     return div_prin
+
 def card_info(country,name,i,DATAS_DIR):
     L=['games','goals','assists','possession','avg_age','cards_yellow','cards_red','confe']
     df = pd.read_csv(os.path.join(DATAS_DIR, "data_teamsCup.csv"),sep=",")
@@ -422,3 +423,20 @@ def createTop5(DATAS_DIR,country):
         dbc.Col([title_top,table],className="margin3"),
         dbc.Col([title_assis,table2],className="margin3")],className="container_tables")
     return final
+
+def top5player_goals (df,country):
+    df_country = df[df.team==country]
+    df_sorted = df_country.sort_values(by="goals", ascending=False).iloc[:5]
+
+    fig_goals = px.bar(df_sorted, x='player', y=['goals_pens', 'pens_made'],
+                barmode='stack', template='simple_white')
+
+    fig_goals.update_layout(
+        title='Top 5 players with most goals',
+        xaxis_title='Players',
+        yaxis_title='Goals'
+    )
+
+    return fig_goals
+
+
