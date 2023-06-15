@@ -128,49 +128,211 @@ folder_confe = 'assets/Confederaciones'
 df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
 
 
-def grid_country(teams_per_confe,conf,sizePer):
-    imagenes = []
-    for img in range(len(teams_per_confe)):
-        """imag={
-            'src': os.path.join(folder_images,teams_per_confe[img]),
-            'alt': 'Imagen '+str(img),    
-            }
-        imagenes.append(imag)"""
-
-        print(img)
-
-"""        
-    componente_grid= html.Div([
-        html.Div([
-        html.Img(src=imagen['src'], alt=imagen['alt'], className="grid-item  img-fluid img-thumbnail",style={'width': f'{sizePer}%'})
-        for imagen in imagenes
-        ],className=f"grid-container{conf} content1")],className="container1")
-    return componente_grid
-
 def imagenes_confe(df):
     for confederation in df.continente.unique():
         df_f = df[df.continente==confederation]
         teams_per_confe = df_f.team.unique()
         if confederation == 'UEFA':
-            
-            UEFA = grid_country(teams_per_confe,1,100)
+            UEFA= html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                            dbc.Row(
+                                dbc.Col(
+                                    [
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Br(),html.Br(),
+                                        html.H4("Confederacion Sudamericana"),
+                                    ],
+                                    className="text-center"
+                                )
+                            ),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[6]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[7]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[8]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[9]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[10]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[11]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[12]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=1, className="text-center p-0")
+                                 
+                                ],
+                                className="mt-4 no-gutters justify-content-center",
+                            ),
+                        ],
+                        className="my-4",
+                        style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
         elif confederation == 'AFC':
-            AFC = grid_country(teams_per_confe,2,43)
-        elif confederation == 'CAF':
-            CAF = grid_country(teams_per_confe,3,35)
+            AFC= html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                            dbc.Row(
+                                dbc.Col(
+                                    [
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Br(),html.Br(),
+                                        html.H4("Confederacion Sudamericana"),
+                                    ],
+                                    className="text-center"
+                                )
+                            ),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
+                                 
+                                ],
+                                className="mt-4 no-gutters justify-content-center",
+                            ),
+                        ],
+                        className="my-4",
+                        style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
         elif confederation == 'CONMEBOL':
-            CONMEBOL = grid_country(teams_per_confe,4,33)
+            CONMEBOL= html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                            dbc.Row(
+                                dbc.Col(
+                                    [
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Br(),html.Br(),
+                                        html.H4("Confederacion Sudamericana"),
+                                    ],
+                                    className="text-center"
+                                )
+                            ),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=3, className="text-center p-0")
+                                 
+                                ],
+                                className="mt-4 no-gutters justify-content-center",
+                            ),
+                        ],
+                        className="my-4",
+                        style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
+        elif confederation == 'CAF':
+            CAF= html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                            dbc.Row(
+                                dbc.Col(
+                                    [
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Br(),html.Br(),
+                                        html.H4("Confederacion Sudamericana"),
+                                    ],
+                                    className="text-center"
+                                )
+                            ),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
+                                 
+                                ],
+                                className="mt-4 no-gutters justify-content-center",
+                            ),
+                        ],
+                        className="my-4",
+                        style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
         elif confederation == 'CONCACAF':
-            CONCACAF = grid_country(teams_per_confe,5,33)
-    return UEFA,AFC,CAF,CONMEBOL,CONCACAF
+            CONCACAF= html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                            dbc.Row(
+                                dbc.Col(
+                                    [
+                                        html.Img(src=os.path.join(folder_confe,confederation+".png"), alt="Logo", style={"width": "200px", "height": "150px"}),
+                                        html.Br(),html.Br(),
+                                        html.H4("Confederacion Sudamericana"),
+                                    ],
+                                    className="text-center"
+                                )
+                            ),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[0]), alt="Logo 1", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[1]), alt="Logo 2", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[2]), alt="Logo 3", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
+                                    dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
+                                 
+                                ],
+                                className="mt-4 no-gutters justify-content-center",
+                            ),
+                        ],
+                        className="my-4",
+                        style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
 
-UEFA,AFC,CAF,CONMEBOL,CONCACAF= imagenes_confe(df_img_team)"""
+    return UEFA,CONMEBOL,CONCACAF,AFC,CAF
 
+UEFA,CONMEBOL,CONCACAF,AFC,CAF=imagenes_confe(df_img_team)
 
 layout = html.Div([
     dcc.Location(id='url', refresh=False),
      html.Div(
-    [navbar1, navbar2,carousel])
-    #""",UEFA,AFC,CAF,CONMEBOL,CONCACAF"""
+    [navbar1, navbar2,carousel,UEFA,CONMEBOL,CONCACAF,AFC,CAF])
+  
 ])
-#como hacer una grid
+
