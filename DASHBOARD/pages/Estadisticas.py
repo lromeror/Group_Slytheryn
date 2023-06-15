@@ -6,6 +6,7 @@ import os
 import pandas as pd 
 import numpy as np
 import random as rd
+import plotly.express as px
 from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info,created_row_matches,row_matches,createTop5
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
@@ -170,7 +171,26 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
             dbc.Row(html.H4("GOALS and ASSISTS")),
             dbc.Row([createTop5(DATAS_DIR,country)])],className="Container_principal")
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
-        return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all,div_goals
+        df_ply = pd.read_excel(os.path.join(DATAS_DIR,'Players.xlsx'),sheet_name='player_stats')
+        graphics = html.Div([
+                dcc.Dropdown(
+                    df_ply[df_ply["team"]=='Argentina'].player.unique(), id="player_d"
+                ),
+                dcc.Graph(id="player_g"),
+        ])
+        @callback(
+            Output("player_g", "figure"),
+            Input("player_d", "value"))
+        def update_bar_chart(player_d):
+                    indice = df_ply[df_ply["player"]==player_d].index
+                    df_player = df_ply.loc[indice, :]
+                    player_g= px.bar(df_player, x = 'player', y =['games_starts', 'games_sub'],  color_discrete_sequence=px.colors.qualitative.Pastel)
+                    player_g.update_layout(template='simple_white', title=f'Total games played by {player_d}',
+                        xaxis_title='Team',
+                        yaxis_title='Games' )
+                    return player_g
+        return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all,div_goals, graphics
+
 
 layout = html.Div(
     [navbar,navbar2,user_country,countries,stadistics_country],className="Principal"
