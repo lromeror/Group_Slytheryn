@@ -454,6 +454,10 @@ def graficaLine(label):
     return fig
 
 
+
+fig50 = px.bar(df_gra, x="CONFEDERATIONS", y="PERCENT",title="Long-Form Input")
+
+
 grafiProm=html.Div(
             dbc.Container(
                 [
@@ -469,7 +473,8 @@ grafiProm=html.Div(
                 ),
                 dbc.Col(
                     [
-
+                        html.H4('PERCENT TEAM PER CONFERATIONS'),
+                        dcc.Graph(figure=fig50)
                     ],
                     width=6
                 ),
