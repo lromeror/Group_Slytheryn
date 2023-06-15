@@ -372,6 +372,7 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
 
 def createTop5(DATAS_DIR,country):
     dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
+    dff.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
     df = dff[dff.team==country].sort_values(["goals"],ascending=False)
     df_asistidores = df[["player","assists","games"]][0:5]
     df_goleadores = df[["player","goals","games"]][0:5]
@@ -436,7 +437,6 @@ def top5player_goals (df,country):
         xaxis_title='Players',
         yaxis_title='Goals'
     )
-
     return fig_goals
 
 

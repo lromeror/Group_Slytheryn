@@ -64,7 +64,6 @@ navbar2 = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "http://127.0.0.1:8050/",style={"textDecoration": "none"})),
-                        dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
@@ -173,13 +172,14 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
             dbc.Row([createTop5(DATAS_DIR,country)])],className="Container_principal")
         
         df_ply = pd.read_csv(os.path.join(DATAS_DIR,'player_stats.csv'),sep=",")
+        df_ply.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
         df_country = df_ply[df_ply.team==country]
+        print(country)
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
         df_sorted = df_country.sort_values(by="goals", ascending=False).iloc[:5]
         df_sorted=df_sorted.rename(columns={'goals_pens':'Goals' ,'pens_made':'Penals'})
         fig_goals = px.bar(df_sorted, x='player', y=['Goals', 'Penals'],
                         barmode='stack', template='simple_white',text_auto=True)
-
         fig_goals.update_layout(
                 title='Top 5 players with most goals'.title(),title_x=0.5,
                 xaxis_title='Players',
@@ -191,17 +191,38 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
 
         fig_assist = px.bar(df_sorted1, x='player', y='assists',
                             template='simple_white',text_auto=True)
-
+        fig_assist.update_traces(marker_color='rgb(46, 134, 193 )')
         fig_assist.update_layout(
             title='Top 5 players with most assists'.title(),title_x=0.5,
             xaxis_title='Players',
             yaxis_title='Assists',
         )
+        matches_fifa_wc2022=pd.read_csv(os.path.join(DATAS_DIR,'Matches.csv'),sep=",")
+        df_match = matches_fifa_wc2022[['match_no','1','2','1_poss','2_poss']]
+        df_match.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
+        df_match = df_match[(df_match['1'] == country) | (df_match['2'] == country)]
+        L=[]
+        for x,y,poss1,poss2  in zip(df_match['1'],df_match['2'],df_match['1_poss'],df_match['2_poss']) :
+            if x == country:
+                L.append(poss1)
+            else:
+                L.append(poss2)
+        df_poss_match = pd.DataFrame(columns=["Match","Possession"])
+        df_poss_match['Match'] =np.arange(1,len(df_match)+1)
+        df_poss_match['Possession'] = L
+        df_poss_match['Possession']=df_poss_match['Possession'].astype(int)
+        fig1 = px.bar(x=df_poss_match['Match'], y=df_poss_match['Possession'],text=[str(x)+"%" for x in df_poss_match['Possession']])
+        fig1.update_traces(marker_color='rgb(46, 134, 193 )')
+        fig1.update_layout(
+            title=f'{country} Possession in each match'.title(),title_x=0.5,
+            xaxis_title='Match',
+            yaxis_title='Possession')
+        fig1
         div_fig_goals_country= dbc.Container([
             dbc.Row([dcc.Graph(figure=fig_goals)],className='margin4'),
-            dbc.Row([dcc.Graph(figure=fig_assist)],className='margin4')
+            dbc.Row([dcc.Graph(figure=fig_assist)],className='margin4'),
+            dbc.Row([dcc.Graph(figure=fig1)],className='margin4'),
             ])
-
     return  container_per_country_c,title_,row_cards_info,games_title,row_matches_all,div_goals,div_fig_goals_country
 
 
