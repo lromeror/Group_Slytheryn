@@ -488,8 +488,7 @@ grafiProm=html.Div(
 
 
 layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-     html.Div(
+    html.Div(
     [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm],style={"background-color": "rgb(235, 231, 231)"})
   
 ])
