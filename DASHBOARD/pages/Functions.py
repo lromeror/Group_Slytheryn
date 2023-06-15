@@ -318,6 +318,7 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][5],df['2'][5]],df['1_goals'].tolist()[5],df['2_goals'].tolist()[5])
         ])
     if len(df)>6:
+        if country in ['']
         created_row_matches_6 = dbc.Container([
         dbc.Row([html.H3("Final".title())],className='Container_principal'),
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
