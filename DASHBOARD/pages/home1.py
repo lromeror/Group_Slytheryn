@@ -427,25 +427,32 @@ title2=title=dbc.Container([
 
 #DATASET
 df_gra= pd.read_csv('DASHBOARD/assets/datas/dataConfe.csv',sep=',')
-grafica1= html.Div([
-    html.H4('Restaurant tips by day of week'),
+grafica1=html.Div([
+    html.H4('Average'),
     dcc.Dropdown(
-        id="dropdown20",
-        options=["Fri", "Sat", "Sun"],
-        value="Fri",
-        clearable=False,
+        id="dropdown",
+        options=df_gra.columns.to_list()[1:],
+        value=df_gra.columns.to_list()[1],
+      
     ),
-    dcc.Graph(id="graph50"),
+    dcc.Graph(id="graph"),
 ])
+
+
 @callback(
-    Output("graph50", "figure"), 
-    Input("dropdown20", "value"))
-def update_bar_chart(day):
-    df = px.data.tips() # replace with your own data source
-    mask = df["day"] == day
-    fig = px.bar(df[mask], x="sex", y="total_bill", 
-                 color="smoker", barmode="group")
+    Output("graph", "figure"), 
+    Input("dropdown", "value"))
+def graficaLine(label):
+    fig = px.line(df_gra, x="CONFEDERATIONS", y=label)
+    fig.update_traces(line = dict(dash = "dot", width = 4, color = "orange"),
+                        marker = dict(color = "darkblue", size = 9, opacity = 0.8))
+    fig.update_traces(textposition="bottom right")
+    fig.update_traces(textposition = "top center")
+   
+    
+    #fig = px.bar(df_gra, x="CONFEDERATIONS", y=label)
     return fig
+
 
 grafiProm=html.Div(
             dbc.Container(
@@ -455,9 +462,9 @@ grafiProm=html.Div(
                           dbc.Row(
             [
                 dbc.Col(
-                    
-                        grafica1,
-
+                    [
+                        grafica1
+                    ],
                     width=6
                 ),
                 dbc.Col(
