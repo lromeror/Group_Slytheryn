@@ -318,57 +318,41 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
         dbc.Row([html.H3("Semi-final".title())],className='Container_principal'),
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][5],df['2'][5]],df['1_goals'].tolist()[5],df['2_goals'].tolist()[5])
         ])
-<<<<<<< HEAD
     """if len(df)>6:
         if country in ['']
         created_row_matches_6 = dbc.Container([
         dbc.Row([html.H3("Final".title())],className='Container_principal'),
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
         ])"""
-=======
-    if len(df)>6:
-        if country not in ['Croatia','Morocco']:
-
-            created_row_matches_6 = dbc.Container([
-            dbc.Row([html.H3("Final".title())],className='Container_principal'),
-            row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
-            ])
-        else:
-            created_row_matches_6 = dbc.Container([
-            dbc.Row([html.H3("Play-off for third place".title())],className='Container_principal'),
-            row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
-            ])
-
->>>>>>> ff4360d5d85cab86088f2afbc59ee94ef082a29b
     final = dbc.Container([title,created_row_matches_,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
     return final
 
-#def createTop5(DATAS_DIR,country):
-#    dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
-#    print(dff)
-#    df_goleadores = dff[dff.team==country].sort_values(["goals"],ascending=False)
-#    df_goleadores = df_goleadores[["player","goals","games"]][0:5]
-#    title_top = html.H3("Top 5 goal scorers")
-#    table =dash_table.DataTable(
-#                            id='table_materias',
-#                            columns=[{'name':col, 'id':col}for col in df_goleadores.columns],
-#                            data=df_goleadores.to_dict('records'),  # the contents of the table
-#                            cell_selectable=True,  # para que no se me presente el hover
-#                            fill_width=False,
-#                            sort_action='native',
-#                            style_as_list_view=True,
-#                            style_header={
-#                                'backgroundColor': '#edf3f4',
-#                                'fontWeight': 'bold',
-#                                'textAlign': 'center'
-#                            },
-#                            style_cell={
-#                                'backgroundColor': '#edf3f4',
-#                                'textAlign': 'center',
-#                                'padding': '5px',
-#                                'textAlign': 'center'
-#                            },
-#                            style_data={'borderBottom': '1px solid #167ac6',
-#                                        'fontFamily': 'Quicksand'})
-#    final = dbc.Container([title_top,table])
-#    return final
+def createTop5(DATAS_DIR,country):
+    dff= pd.read_csv(os.path.join(DATAS_DIR, "player_stats.csv"),sep=",")
+    print(dff)
+    df_goleadores = dff[dff.team==country].sort_values(["goals"],ascending=False)
+    df_goleadores = df_goleadores[["player","goals","games"]][0:5]
+    title_top = html.H3("Top 5 goal scorers")
+    table =dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in df_goleadores.columns],
+                            data=df_goleadores.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'})
+    final = dbc.Container([title_top,table])
+    return final
