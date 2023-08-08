@@ -75,8 +75,8 @@ navbar2 = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
-                       
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Comparations",href= "/Comparations",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
                     ],
@@ -495,6 +495,5 @@ grafiProm=html.Div(
 layout = html.Div([
     html.Div(
     [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm],style={"background-color": "rgb(235, 231, 231)"})
-  
 ])
 
