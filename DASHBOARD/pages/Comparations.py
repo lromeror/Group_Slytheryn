@@ -158,7 +158,13 @@ def graphTeams(country1):
     trasnpuest = trasnpuest.drop(trasnpuest.index[0])
     dfNew = trasnpuest.reset_index()
     dfNew = dfNew.rename(columns={'index': 'Category'})
-    fig = px.bar(dfNew, x='Category', y=country1, color='Category')
+    fig = px.bar(dfNew, x='Category', y=country1, color='Category',text_auto= True)
+    fig.update_traces(textfont_size = 10, textposition = "outside")
+    fig.update_layout(
+            font=dict(
+            family="Droid Serif, monospace",
+            size=14,
+            color="black"))
     return fig
 
 Team_general=html.Div(
