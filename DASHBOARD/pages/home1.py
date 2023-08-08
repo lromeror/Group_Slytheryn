@@ -224,7 +224,6 @@ def imagenes_confe(df):
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
-                                 
                                 ],
                                 className="mt-4 no-gutters justify-content-center  g-0",
                             ),
@@ -437,8 +436,6 @@ grafica1=html.Div([
     ),
     dcc.Graph(id="graph"),
 ])
-
-
 @callback(
     Output("graph", "figure"), 
     Input("dropdown", "value"))

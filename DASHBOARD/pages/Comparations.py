@@ -8,7 +8,6 @@ import numpy as np
 import random as rd
 import plotly.express as px
 import plotly.graph_objects as go
-from .Functions import div_countries, country_flag_name, Lineup_players,row_card_info,created_row_matches,row_matches,createTop5,top5player_goals
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -85,4 +84,47 @@ navbar2 = dbc.Navbar(
     ),
     color="dark",
     dark=True,
+)
+PAGES_DIR = os.path.dirname(__file__)
+APP_DIR = os.path.relpath(os.path.dirname(PAGES_DIR))
+ASSETS_DIR = os.path.relpath(os.path.join(APP_DIR,'assets'))
+DATAS_DIR = os.path.relpath(os.path.join(ASSETS_DIR,'datas'))
+df_img_team = pd.read_csv(os.path.join(DATAS_DIR, "selecciones.csv"),sep=",")
+list_teams = df_img_team.seleccion.tolist()
+PLAYER_DIR  = '../assets/Images'
+IMAGES_DIR = '../assets/Selecciones'
+
+Selections_Teams = dbc.Container([
+    dbc.Row(html.H2("CHOOSE TWO COUNTRIES"),className="Titlecenter"),
+    dbc.Row([
+        dbc.Col([
+            dcc.Dropdown(list_teams,"Argentina",id='country1'),
+            ]),
+        dbc.Col([
+            dcc.Dropdown(list_teams,"Francia",id='country2')]
+                ),
+    ],className=""),
+])
+Images_Teams = dbc.Container([
+    html.H1("hola"),
+    dbc.Row(id="country"),
+    ])
+
+@callback(
+    Output('ImgCountry1','children'),
+    [Input('country','value')],
+    [Input('country2','value')]
+)
+def getselectedteams(country1,country2): 
+    cod_img = df_img_team[df_img_team['seleccion']==country1]['team']
+    cod_img2 = df_img_team[df_img_team['seleccion']==country2]['team']
+    confe = df_img_team[df_img_team['seleccion']==country1]["continente"]
+    return dbc.Container([
+            dbc.Col(html.Img(src=os.path.join(IMAGES_DIR,cod_img))),
+            dbc.Col(html.Img(src=os.path.join(IMAGES_DIR,cod_img2))),
+            ])
+
+
+layout = html.Div(
+    [navbar,navbar2,Selections_Teams,Images_Teams],className="Principal"
 )

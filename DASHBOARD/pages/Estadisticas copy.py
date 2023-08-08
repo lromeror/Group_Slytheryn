@@ -170,8 +170,6 @@ title_ = dbc.Row([html.H2("Stadistics")],className="title_stadistics")
 )
 def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31):
     triggered_id = ctx.triggered_id
-    #print(triggered_id)
-    #pais = df_img_team[df_img_team['cod_img']==triggered_id]['seleccion']
     if triggered_id !=  None :
         country = df_img_team[df_img_team.cod_img==triggered_id]['seleccion'].values[0]
         cod_img = triggered_id+".png"
@@ -193,7 +191,6 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
 def graphics_player(country):
     df_ply = pd.read_excel(os.path.join(DATAS_DIR,'Players.xlsx'),sheet_name='player_stats')
     html.Div([
-        
         dcc.Dropdown(
             df_ply[df_ply["team"]==country], id="player_d"
         ),
@@ -209,7 +206,6 @@ def graphics_player(country):
         fig_games_player.update_layout(template='simple_white', title=f'Total games played by {player}',
             xaxis_title='Team',
             yaxis_title='Games' )
-        
         return fig_games_player
     
 layout = html.Div(
