@@ -8,6 +8,8 @@ import numpy as np
 import random as rd
 import plotly.express as px
 import plotly.graph_objects as go
+
+from .Functions import row_matches
 nav_item = dbc.NavItem(dbc.NavLink("Link", href="#"))
 
 
@@ -64,7 +66,7 @@ navbar2 = dbc.Navbar(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "http://127.0.0.1:8050/",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
-                        dbc.Col(dbc.NavbarBrand("Comparations",href= "/Comparations",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Comparisons",href= "/Comparations",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
                     ],
@@ -101,7 +103,7 @@ Selections_Teams = dbc.Container([
             dcc.Dropdown(options=list_teams, value="Argentina", id='country1'),
         ]),
         dbc.Col([
-            dcc.Dropdown(options=list_teams, value="Ecuador", id='country2'),
+            dcc.Dropdown(options=list_teams, value="France", id='country2'),
         ]),
     ]),
 ])
@@ -198,7 +200,7 @@ graficaJugadoresDestacados=grafiProm=html.Div(
                 [
                     html.Div(
                         [
-                          dbc.Row(
+                    dbc.Row(
             [
                 dbc.Col(
                     [
@@ -224,8 +226,25 @@ graficaJugadoresDestacados=grafiProm=html.Div(
                 style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
             ),
         )
+matches = dbc.Container(
+    id="Partido",className="Container_matches_main"
+)
+@callback(
+    Output('Partido', 'children'),
+    [Input('country1', 'value'), Input('country2', 'value')])
+def get_selected_teams(country1, country2):
 
+    df_img_team_matches = pd.read_csv('DASHBOARD/assets/datas/Matches.csv',sep=',')
+    df_img_team_matches = df_img_team_matches[((df_img_team_matches['1']==country1)&(df_img_team_matches['2']==country2)) |((df_img_team_matches['2']==country2)&(df_img_team_matches['1']==country2))]
 
+    if df_img_team_matches.empty :
+        return dbc.Row([html.H4("NO MATCHES")],className="Center")
+    else : 
+        Id_team = [country1,country2]
+        goles_1 = df_img_team_matches.iloc[0]['score'].split(",")[0]
+        goles_2 = df_img_team_matches.iloc[0]['score'].split(",")[1] 
+        return dbc.Row([row_matches(DATAS_DIR,IMAGES_DIR,Id_team,goles_1,goles_2)],className="container_matches")
+    
 layout = html.Div(
-    [navbar,navbar2,Selections_Teams,Images_Teams, Team_general,graficaJugadoresDestacados],className="Principal"
+    [navbar,navbar2,Selections_Teams,Images_Teams,matches,Team_general,graficaJugadoresDestacados],className="Principal"
 )

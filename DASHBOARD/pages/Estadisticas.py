@@ -65,7 +65,7 @@ navbar2 = dbc.Navbar(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "http://127.0.0.1:8050/",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
-                        dbc.Col(dbc.NavbarBrand("Comparations",href= "/Comparations",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Comparisons",href= "/Comparations",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
                     ],
