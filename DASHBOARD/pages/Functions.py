@@ -311,7 +311,8 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
         row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][i],df['2'][i]],df['1_goals'].tolist()[i],df['2_goals'].tolist()[i])
         for i in range(3)
         ])
-    tables1= dash_table.DataTable(
+    if country not in ["Costa Rica","Korea Republic","United States"]:
+        tables1= dash_table.DataTable(
                             id='table_materias',
                             columns=[{'name':col, 'id':col}for col in table.columns],
                             data=table.to_dict('records'),  # the contents of the table
@@ -335,11 +336,101 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
                             style_data_conditional = [
                                 {
                                     'if': {
-                                        'filter_query': '{{Team}} = {}'.format(country),
+                                        'filter_query': "{{Team}} = {}".format(country),
                                         },
                                     'backgroundColor': '#4a98d0',
                                     'fontWeight': 'bold'
-                                }])            
+                                }])   
+    elif country =="Costa Rica":
+        tables1= dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in table.columns],
+                            data=table.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'},
+                            style_data_conditional = [
+                                {
+                                    'if': {
+                                        'filter_query': "{Team} = 'Costa Rica'",
+                                        },
+                                    'backgroundColor': '#4a98d0',
+                                    'fontWeight': 'bold'
+                                }])           
+    elif country == "Korea Republic":
+        tables1= dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in table.columns],
+                            data=table.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'},
+                            style_data_conditional = [
+                                {
+                                    'if': {
+                                        'filter_query': "{Team} = 'Korea Republic'",
+                                        },
+                                    'backgroundColor': '#4a98d0',
+                                    'fontWeight': 'bold'
+                                }])     
+    elif country == "United States":
+        tables1= dash_table.DataTable(
+                            id='table_materias',
+                            columns=[{'name':col, 'id':col}for col in table.columns],
+                            data=table.to_dict('records'),  # the contents of the table
+                            cell_selectable=True,  # para que no se me presente el hover
+                            fill_width=False,
+                            sort_action='native',
+                            style_as_list_view=True,
+                            style_header={
+                                'backgroundColor': '#edf3f4',
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'backgroundColor': '#edf3f4',
+                                'textAlign': 'center',
+                                'padding': '5px',
+                                'textAlign': 'center'
+                            },
+                            style_data={'borderBottom': '1px solid #167ac6',
+                                        'fontFamily': 'Quicksand'},
+                            style_data_conditional = [
+                                {
+                                    'if': {
+                                        'filter_query': "{Team} = 'United States'",
+                                        },
+                                    'backgroundColor': '#4a98d0',
+                                    'fontWeight': 'bold'
+                                }]) 
     if len(df)>3:
         created_row_matches_3 = dbc.Container([
         dbc.Row([html.H3("Round of 16".title())],className='Container_principal margin2'),
@@ -367,7 +458,7 @@ def created_row_matches(country,DATAS_DIR,IMAGES_DIR):
             dbc.Row([html.H3("Play-off for third place".title())],className='Container_principal'),
             row_matches(DATAS_DIR,IMAGES_DIR,[df['1'][6],df['2'][6]],df['1_goals'].tolist()[6],df['2_goals'].tolist()[6])
             ])
-    final = dbc.Container([title,created_row_matches_,tables1,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal")
+    final = dbc.Container([title,created_row_matches_,tables1,created_row_matches_3,created_row_matches_4,created_row_matches_5,created_row_matches_6],className="Container_principal marginbottom")
     return final
 
 def createTop5(DATAS_DIR,country):

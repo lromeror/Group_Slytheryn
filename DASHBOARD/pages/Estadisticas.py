@@ -156,6 +156,7 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
     #pais = df_img_team[df_img_team['cod_img']==triggered_id]['seleccion']
     if triggered_id !=  None :
         country = df_img_team[df_img_team.cod_img==triggered_id]['seleccion'].values[0]
+        print(country)
         cod_img = triggered_id+".png"
     abreviaturas = df_img_team['cod_img'].tolist()
     abreviaturas.append(None)
@@ -169,13 +170,12 @@ def container_per_country(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,
         games_title = dbc.Row([html.H2("GAMES")],className="title_stadistics")
         row_matches_all = created_row_matches(country,DATAS_DIR,IMAGES_DIR)
         div_goals = dbc.Container([
-            dbc.Row(html.H4("GOALS and ASSISTS")),
+            dbc.Row(html.H4("GOALS and ASSISTS"),className="margintop"),
             dbc.Row([createTop5(DATAS_DIR,country)])],className="Container_principal")
         
         df_ply = pd.read_csv(os.path.join(DATAS_DIR,'player_stats.csv'),sep=",")
         df_ply.replace("Saudi Arabia","Saudi_Arabia",inplace=True)
         df_country = df_ply[df_ply.team==country]
-        print(country)
         #x =row_matches(DATAS_DIR,IMAGES_DIR,["Argentina","Mexico"],"2","3")
         df_sorted = df_country.sort_values(by="goals", ascending=False).iloc[:5]
         df_sorted=df_sorted.rename(columns={'goals_pens':'Goals' ,'pens_made':'Penals'})
