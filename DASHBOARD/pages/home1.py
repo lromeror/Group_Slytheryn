@@ -487,10 +487,10 @@ grafiProm=html.Div(
             ),
         )
 
-
-
+final = html.Div(
+            html.P('DASH ANGELO ZURITA - LUIS ROMERO - JONATHAN ZAMBRANO ©2023 - TAWS'),className="final")
 layout = html.Div([
     html.Div(
-    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm],style={"background-color": "rgb(235, 231, 231)"})
+    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm,final],style={"background-color": "rgb(235, 231, 231)"})
 ])
 

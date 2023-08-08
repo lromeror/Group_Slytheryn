@@ -252,5 +252,5 @@ def get_selected_teams(country1, country2):
         return dbc.Row([row_matches(DATAS_DIR,IMAGES_DIR,Id_team,goles_1,goles_2)],className="container_matches")
     
 layout = html.Div(
-    [navbar,navbar2,Selections_Teams,Images_Teams,matches,Team_general,graficaJugadoresDestacados],className="Principal"
+    [navbar,navbar2,Selections_Teams,Images_Teams,matches,Team_general],className="Principal"
 )
