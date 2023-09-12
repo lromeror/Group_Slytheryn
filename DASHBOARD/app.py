@@ -2,7 +2,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output, callback
-from pages import Confederations,home1,Estadisticas
+from pages import Confederations,home1,Estadisticas,Comparations
 #from pages import Argentina, Australia,Belgium,Brazil,Canada,Cameroon,Costa_Rica,Croatia, Denmark, Ecuador,England,Spain,France,Germany,Ghana,Iran,Japan,Korea_Republic,Saudi_Arabia,Morocco,Mexico,Netherlands,Poland,Portugal,Qatar,Senegal,Serbia,Switzerland,Tunisia,Uruguay,United_States,Wales,Confederations,home1,Estadisticas
 # bootstrap theme
 # https://bootswatch.com/lux/
@@ -25,6 +25,8 @@ def display_page(pathname):
         return Confederations.layout
     if pathname == '/Estadisticas':
         return Estadisticas.layout
+    if pathname == '/Comparations':
+        return Comparations.layout
     else:
         return home1.layout;
 """    elif pathname == '/Argentina':

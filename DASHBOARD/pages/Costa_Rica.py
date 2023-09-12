@@ -74,7 +74,7 @@ navbar = dbc.Navbar(
 )
 df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=';')
 cod_img = df_img_team[df_img_team['seleccion']==pais]['team'].values[0]
-folder_img_players = f'assets/Images/{pais}'
+folder_img_players = f'assets/Images/Costa Rica'
 folder_img_seleccion = f'assets/Selecciones'
 #players = pd.read_excel('DASHBOARD/assets/datas/Selecciones_mundial2022.xlsx',sheet_name=f'{pais}')
 players=pd.read_csv('DASHBOARD/assets/Renombrar - jonathan.csv',sep=';')

@@ -3,6 +3,7 @@ from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html
 import os
+import plotly.express as px
 import pandas as pd
 
 
@@ -74,8 +75,8 @@ navbar2 = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(dbc.NavbarBrand("Home",href= "/home1",style={"textDecoration": "none"})),
-                        dbc.Col(dbc.NavbarBrand("Confederations",href= "/Confederations",style={"textDecoration": "none"})),
                         dbc.Col(dbc.NavbarBrand("Statistics",href= "/Estadisticas",style={"textDecoration": "none"})),
+                        dbc.Col(dbc.NavbarBrand("Comparisons",href= "/Comparations",style={"textDecoration": "none"})),
                         #dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px"),className="right"),
                         
                     ],
@@ -108,13 +109,18 @@ def toggle_navbar_collapse(n, is_open):
         return not is_open
     return is_open
 
+
+folder_images = 'assets/Selecciones'
+folder_confe = 'assets/Confederaciones'
+df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
+
 carousel = dbc.Carousel(
     items=[
         {"key": "1", 
-         "src": "https://images2.minutemediacdn.com/image/upload/c_crop,w_4020,h_2261,x_0,y_110/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/12up_es_international_web/01gmk9xqdff9tjvhar8g.jpg"
+         "src": os.path.join(folder_images,"foto1.png")
          },
-        {"key": "2", "src": "https://resizer.iproimg.com/unsafe/880x/filters:format(webp)/https://assets.iproup.com/assets/jpg/2023/03/34125.jpg"},
-        {"key": "3", "src": "https://cdn.mos.cms.futurecdn.net/Uy2oLCTFTGAFbUp5mg2Q3H.jpg"},
+        {"key": "2", "src": os.path.join(folder_images,"foto2.png")},
+        {"key": "3", "src": os.path.join(folder_images,"foto3.png")},
     ],
     controls=True,
     indicators=True,
@@ -122,11 +128,6 @@ carousel = dbc.Carousel(
     ride="carousel",
     className='img-fluid'
 )
-
-folder_images = 'assets/Selecciones'
-folder_confe = 'assets/Confederaciones'
-df_img_team = pd.read_csv('DASHBOARD/assets/datas/selecciones.csv',sep=',')
-
 
 def imagenes_confe(df):
     for confederation in df.continente.unique():
@@ -223,7 +224,6 @@ def imagenes_confe(df):
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[3]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[4]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0"),
                                     dbc.Col(html.Img(src=os.path.join(folder_images,teams_per_confe[5]), alt="Logo 4", className="img-fluid img-thumbnail", style={"width": "90px", "height": "60px"}), width=2, className="text-center p-0")
-                                 
                                 ],
                                 className="mt-4 no-gutters justify-content-center  g-0",
                             ),
@@ -412,13 +412,85 @@ confe3=html.Div(
             ),
         )
 
+title=dbc.Container([
+    dbc.Row([
+        html.H2('Football confederations of the world'.upper(),style={'margin':'1vw  0 1vw  0',"text-align":"center"}),
+    ])
+])
+
+title2=title=dbc.Container([
+    dbc.Row([
+        html.H2('statistics by confederations'.upper(),style={'margin':'1vw  0 1vw  0',"text-align":"center"}),
+    ])
+])
+
+#DATASET
+df_gra= pd.read_csv('DASHBOARD/assets/datas/dataConfe.csv',sep=',')
+grafica1=html.Div([
+    html.H4('Average'),
+    dcc.Dropdown(
+        id="dropdown",
+        options=df_gra.columns.to_list()[1:-1],
+        value=df_gra.columns.to_list()[1],
+      
+    ),
+    dcc.Graph(id="graph"),
+])
+@callback(
+    Output("graph", "figure"), 
+    Input("dropdown", "value"))
+def graficaLine(label):
+    fig = px.line(df_gra, x="CONFEDERATIONS", y=label)
+    fig.update_traces(line = dict(dash = "dot", width = 4, color = "orange"),
+                        marker = dict(color = "darkblue", size = 9, opacity = 0.8))
+    fig.update_traces(textposition="bottom right")
+    fig.update_traces(textposition = "top center")
+   
+    
+    #fig = px.bar(df_gra, x="CONFEDERATIONS", y=label)
+    return fig
 
 
 
+fig50 = px.bar(df_gra, x="CONFEDERATIONS", y="PERCENT")
+
+
+grafiProm=html.Div(
+            dbc.Container(
+                [
+                    html.Div(
+                        [
+                          dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        grafica1
+                    ],
+                    width=6
+                ),
+                dbc.Col(
+                    [
+                        html.H4('PERCENT TEAM PER CONFERATIONS'),
+                        dcc.Graph(figure=fig50)
+                    ],
+                    width=6
+                ),
+            ]
+        ),],
+            className="my-4",
+            style={"text-align": "center"},
+                    ),
+                ],
+                fluid=True,
+                className="container mt-4",
+                style={"background-color": "#f2f2f2", "padding": "20px","border-radius": "10px"},
+            ),
+        )
+
+final = html.Div(
+            html.P('DASH ANGELO ZURITA - LUIS ROMERO - JONATHAN ZAMBRANO ©2023 - TAWS'),className="final")
 layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-     html.Div(
-    [navbar1, navbar2,carousel,UEFA,confe3,confe2])
-  
+    html.Div(
+    [navbar1, navbar2,carousel,title,UEFA,confe3,confe2,title2,grafiProm,final],style={"background-color": "rgb(235, 231, 231)"})
 ])
 
