@@ -1,8 +1,3 @@
-"extension"
-"https://raw.githubusercontent.com/open-contracting-extensions/ocds_enquiry_extension/master/extension.json"
-"https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
-"https://raw.githubusercontent.com/open-contracting-extensions/ocds_techniques_extension/master/extension.json"
-"https://raw.githubusercontent.com/GobiernoFacil/ocds_sercopEnteredValue_extension/master/extension.json"
-"https://gitlab.com/dncp-opendata/ocds_auctions_extension/raw/master/extension.json"
-"https://raw.githubusercontent.com/open-contracting-extensions/ocds_valueBreakdown_extension/main/extension.json"
-"https://raw.githubusercontent.com/open-contracting-extensions/ocds_competitive_extension/master/extension.json"
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ae0a9eb81d484976fd4f5d8625ddaef368d74301cf0c7d58b659c2d8e1ca57b
+size 757
